@@ -19,10 +19,12 @@ export default class Card extends React.Component {
 
             <View>
 
-                <Image
-                    style={styles.card}
-                    source={{ uri: "https://i.stack.imgur.com/6FiRR.png" }}
-                />
+                <Image resizeMode={'cover'}
+                    source={{ uri: 'https://i.stack.imgur.com/6FiRR.png' }}
+                    style={styles.canvas} />
+
+
+
 
                 <Text ellipsizeMode='tail' numberOfLines={2} style={{}}>{this.props.title}</Text>
 

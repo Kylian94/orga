@@ -1,10 +1,13 @@
 import { StyleSheet } from "react-native"
+import { colors } from "./colors";
+import { Dimensions } from "react-native";
+
+var width = Dimensions.get('window').width;
 
 export default StyleSheet.create({
 
     container: {
         flex: 1,
-
         paddingHorizontal: 10,
         //justifyContent: 'center',
         alignItems: 'flex-start',
@@ -24,8 +27,21 @@ export default StyleSheet.create({
     buttonText: {
         fontSize: 20,
         color: '#fff'
+    },
+    titleEvent: {
+        color: "#21B3C6",
+        fontSize: 20,
+        fontWeight: 'bold',
+    },
+    canvas: {
+        width: width - 20,
+        height: 120,
+        borderRadius: 5,
+        borderWidth: 1,
+    },
+    marginTop20: {
+        marginTop: 20,
     }
-
 
 
 })

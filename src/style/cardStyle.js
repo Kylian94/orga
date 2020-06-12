@@ -1,4 +1,7 @@
 import { StyleSheet } from "react-native"
+import { Dimensions } from "react-native";
+
+var width = Dimensions.get('window').width; //full width
 
 export default StyleSheet.create({
 
@@ -23,9 +26,13 @@ export default StyleSheet.create({
         fontSize: 20,
         color: '#fff'
     },
-    card: {
+
+    canvas: {
+
+        width: width - 20,
         height: 120,
-        width: 300
+        borderRadius: 5,
+        borderWidth: 1,
     }
 
 

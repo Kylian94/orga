@@ -19,7 +19,18 @@ export default class Experiences extends React.Component {
                     <Card
                         //key={"experience" + index}
                         //type={experience.type}
-                        title={"test"}
+                        title={"Anniv de Ju'"}
+                    //onPress={() => navigation.navigate('Event')}
+                    //photo={}
+                    //price={experience.price}
+                    //priceType={experience.priceType}
+                    //stars={experience.stars}
+                    //color={colors[experience.color]}
+                    />
+                    <Card
+                        //key={"experience" + index}
+                        //type={experience.type}
+                        title={"Full Moon"}
                     //onPress={() => navigation.navigate('Event')}
                     //photo={}
                     //price={experience.price}

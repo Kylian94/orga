@@ -24,7 +24,7 @@ function MainStackNavigator() {
                     name='Event'
                     component={Event}
 
-                    options={{ title: 'Votre Event', headerTitleStyle: { alignSelf: 'center' }, }}
+                    options={{ title: 'Votre Event', headerTitleStyle: { alignItems: 'center' }, }}
                 />
                 <Stack.Screen
                     name='Detail'
