@@ -8,6 +8,8 @@ import Login from '../screens/LoginScreen'
 import Event from '../screens/EventScreen'
 import AddFriends from '../screens/AddFriendsScreen'
 import AddListe from '../screens/AddListeScreen'
+import Liste from '../screens/ListeScreen'
+import AddItem from '../screens/AddItemScreen'
 
 const Stack = createStackNavigator()
 
@@ -34,6 +36,16 @@ function MainStackNavigator() {
                     name='AddListe'
                     component={AddListe}
                     options={{ title: 'Ajouter une liste', headerTitleStyle: { alignItems: 'center' }, }}
+                />
+                <Stack.Screen
+                    name='Liste'
+                    component={Liste}
+                    options={{ title: 'Liste', headerTitleStyle: { alignItems: 'center' }, }}
+                />
+                <Stack.Screen
+                    name='AddItem'
+                    component={AddItem}
+                    options={{ title: 'Ajouter un item', headerTitleStyle: { alignItems: 'center' }, }}
                 />
                 <Stack.Screen
                     name='Detail'

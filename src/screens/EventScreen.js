@@ -96,19 +96,19 @@ function Event(props) {
 
                     <View style={[styles.listCard, styles.dFlex, styles.alignCenter, styles.justifyBetween, styles.marginBottom20]}>
                         <Text style={[styles.buttonText, styles.textBold, styles.marginLeft20]}>Nourriture</Text>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => navigation.navigate('Liste')}>
                             <Text style={[styles.buttonText, styles.marginRight30]}>></Text>
                         </TouchableOpacity>
                     </View>
                     <View style={[styles.listCard, styles.dFlex, styles.alignCenter, styles.justifyBetween, styles.marginBottom20]}>
                         <Text style={[styles.buttonText, styles.textBold, styles.marginLeft20]}>Nourriture</Text>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => navigation.navigate('Liste')}>
                             <Text style={[styles.buttonText, styles.marginRight30]}>></Text>
                         </TouchableOpacity>
                     </View>
                     <View style={[styles.listCard, styles.dFlex, styles.alignCenter, styles.justifyBetween, styles.marginBottom20]}>
                         <Text style={[styles.buttonText, styles.textBold, styles.marginLeft20]}>Nourriture</Text>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => navigation.navigate('Liste')}>
                             <Text style={[styles.buttonText, styles.marginRight30]}>></Text>
                         </TouchableOpacity>
                     </View>
