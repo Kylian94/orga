@@ -103,7 +103,13 @@ export default StyleSheet.create({
         paddingHorizontal: 15,
         paddingVertical: 5,
         borderRadius: 50
-
+    },
+    btnGreenOutLine: {
+        borderWidth: 1,
+        borderColor: "#21B3C6",
+        paddingHorizontal: 15,
+        paddingVertical: 5,
+        borderRadius: 50
     },
     textWhite: {
         color: "white",
