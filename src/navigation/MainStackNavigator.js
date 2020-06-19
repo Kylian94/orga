@@ -6,6 +6,7 @@ import Home from '../screens/HomeScreen'
 import Detail from '../screens/DetailsScreen'
 import Login from '../screens/LoginScreen'
 import Event from '../screens/EventScreen'
+import AddFriends from '../screens/AddFriendsScreen'
 
 const Stack = createStackNavigator()
 
@@ -13,7 +14,6 @@ function MainStackNavigator() {
     return (
         <NavigationContainer>
             <Stack.Navigator initialRouteName='Home'>
-
                 <Stack.Screen
                     name='Home'
                     component={Home}
@@ -25,6 +25,12 @@ function MainStackNavigator() {
                     component={Event}
 
                     options={{ title: 'Votre Event', headerTitleStyle: { alignItems: 'center' }, }}
+                />
+                <Stack.Screen
+                    name='AddFriends'
+                    component={AddFriends}
+
+                    options={{ title: 'Ajouter des amis', headerTitleStyle: { alignItems: 'center' }, }}
                 />
                 <Stack.Screen
                     name='Detail'

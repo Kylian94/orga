@@ -46,8 +46,23 @@ export default StyleSheet.create({
     marginTop20: {
         marginTop: 20,
     },
+    marginTop40: {
+        marginTop: 40,
+    },
+    marginBottom20: {
+        marginBottom: 20,
+    },
+    marginBottom40: {
+        marginBottom: 40,
+    },
     marginLeft5: {
         marginLeft: 5,
+    },
+    marginLeft20: {
+        marginLeft: 20,
+    },
+    marginRight30: {
+        marginRight: 30,
     },
     dFlex: {
         flex: 1,
@@ -92,7 +107,21 @@ export default StyleSheet.create({
     },
     textWhite: {
         color: "white",
-    }
+    },
+    textBold: {
+        fontWeight: "bold",
+    },
+    profil_picture: {
+        height: 50,
+        width: 50,
+        borderRadius: 25
+    },
+    listCard: {
+        height: 60,
+        width: width - 20,
+        backgroundColor: "#333333",
+        borderRadius: 10,
+    },
 
 
 

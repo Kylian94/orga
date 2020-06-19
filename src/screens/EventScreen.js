@@ -28,14 +28,88 @@ function Event(props) {
                         </TouchableOpacity>
                     </View>
 
-                    <View style={[styles.dFlex, styles.alignStart, styles.justifyBetween, styles.marginTop20]}>
+                    <View style={[styles.dFlex, styles.alignCenter, styles.justifyBetween, styles.marginTop40]}>
                         <View style={[styles.dFlexColumn]}>
                             <Text style={[styles.title]}>Participants :</Text>
                         </View>
-                        <TouchableOpacity style={[styles.btnGreen]}>
+                        <TouchableOpacity style={[styles.btnGreen]} onPress={() => navigation.navigate('AddFriends')}>
                             <Text style={[styles.textWhite]}>
                                 Inviter
                             </Text>
+                        </TouchableOpacity>
+                    </View>
+
+                    <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+                        <View style={[styles.marginTop20, styles.dFlexColumn, styles.alignCenter, styles.marginLeft5, styles.marginRight30]}>
+                            <Image resizeMode={'cover'}
+                                source={{ uri: 'https://i.stack.imgur.com/6FiRR.png' }}
+                                style={styles.profil_picture} />
+                            <Text>John</Text>
+                            <Text style={[styles.textBold]}>Bill</Text>
+                        </View>
+                        <View style={[styles.marginTop20, styles.dFlexColumn, styles.alignCenter, styles.marginLeft5, styles.marginRight30]}>
+                            <Image resizeMode={'cover'}
+                                source={{ uri: 'https://i.stack.imgur.com/6FiRR.png' }}
+                                style={styles.profil_picture} />
+                            <Text>John</Text>
+                            <Text style={[styles.textBold]}>Bill</Text>
+                        </View>
+                        <View style={[styles.marginTop20, styles.dFlexColumn, styles.alignCenter, styles.marginLeft5, styles.marginRight30]}>
+                            <Image resizeMode={'cover'}
+                                source={{ uri: 'https://i.stack.imgur.com/6FiRR.png' }}
+                                style={styles.profil_picture} />
+                            <Text>John</Text>
+                            <Text style={[styles.textBold]}>Bill</Text>
+                        </View>
+                        <View style={[styles.marginTop20, styles.dFlexColumn, styles.alignCenter, styles.marginLeft5, styles.marginRight30]}>
+                            <Image resizeMode={'cover'}
+                                source={{ uri: 'https://i.stack.imgur.com/6FiRR.png' }}
+                                style={styles.profil_picture} />
+                            <Text>John</Text>
+                            <Text style={[styles.textBold]}>Bill</Text>
+                        </View>
+                        <View style={[styles.marginTop20, styles.dFlexColumn, styles.alignCenter, styles.marginLeft5, styles.marginRight30]}>
+                            <Image resizeMode={'cover'}
+                                source={{ uri: 'https://i.stack.imgur.com/6FiRR.png' }}
+                                style={styles.profil_picture} />
+                            <Text>John</Text>
+                            <Text style={[styles.textBold]}>Bill</Text>
+                        </View>
+                        <View style={[styles.marginTop20, styles.dFlexColumn, styles.alignCenter, styles.marginLeft5, styles.marginRight30]}>
+                            <Image resizeMode={'cover'}
+                                source={{ uri: 'https://i.stack.imgur.com/6FiRR.png' }}
+                                style={styles.profil_picture} />
+                            <Text>John</Text>
+                            <Text style={[styles.textBold]}>Bill</Text>
+                        </View>
+                    </ScrollView>
+                    <View style={[styles.dFlex, styles.alignCenter, styles.justifyBetween, styles.marginTop40, styles.marginBottom20]}>
+                        <View style={[styles.dFlexColumn]}>
+                            <Text style={[styles.title]}>Listes :</Text>
+                        </View>
+                        <TouchableOpacity style={[styles.btnGreen]}>
+                            <Text style={[styles.textWhite]}>
+                                Ajouter une liste
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
+
+                    <View style={[styles.listCard, styles.dFlex, styles.alignCenter, styles.justifyBetween, styles.marginBottom20]}>
+                        <Text style={[styles.buttonText, styles.textBold, styles.marginLeft20]}>Nourriture</Text>
+                        <TouchableOpacity>
+                            <Text style={[styles.buttonText, styles.marginRight30]}>></Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View style={[styles.listCard, styles.dFlex, styles.alignCenter, styles.justifyBetween, styles.marginBottom20]}>
+                        <Text style={[styles.buttonText, styles.textBold, styles.marginLeft20]}>Nourriture</Text>
+                        <TouchableOpacity>
+                            <Text style={[styles.buttonText, styles.marginRight30]}>></Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View style={[styles.listCard, styles.dFlex, styles.alignCenter, styles.justifyBetween, styles.marginBottom20]}>
+                        <Text style={[styles.buttonText, styles.textBold, styles.marginLeft20]}>Nourriture</Text>
+                        <TouchableOpacity>
+                            <Text style={[styles.buttonText, styles.marginRight30]}>></Text>
                         </TouchableOpacity>
                     </View>
 
