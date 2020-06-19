@@ -87,7 +87,7 @@ function Event(props) {
                         <View style={[styles.dFlexColumn]}>
                             <Text style={[styles.title]}>Listes :</Text>
                         </View>
-                        <TouchableOpacity style={[styles.btnGreen]}>
+                        <TouchableOpacity style={[styles.btnGreen]} onPress={() => navigation.navigate('AddListe')}>
                             <Text style={[styles.textWhite]}>
                                 Ajouter une liste
                             </Text>

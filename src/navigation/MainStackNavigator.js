@@ -7,6 +7,7 @@ import Detail from '../screens/DetailsScreen'
 import Login from '../screens/LoginScreen'
 import Event from '../screens/EventScreen'
 import AddFriends from '../screens/AddFriendsScreen'
+import AddListe from '../screens/AddListeScreen'
 
 const Stack = createStackNavigator()
 
@@ -17,20 +18,22 @@ function MainStackNavigator() {
                 <Stack.Screen
                     name='Home'
                     component={Home}
-
                     options={{ title: 'ORGA', headerTitleStyle: { alignSelf: 'center' }, }}
                 />
                 <Stack.Screen
                     name='Event'
                     component={Event}
-
                     options={{ title: 'Votre Event', headerTitleStyle: { alignItems: 'center' }, }}
                 />
                 <Stack.Screen
                     name='AddFriends'
                     component={AddFriends}
-
                     options={{ title: 'Ajouter des amis', headerTitleStyle: { alignItems: 'center' }, }}
+                />
+                <Stack.Screen
+                    name='AddListe'
+                    component={AddListe}
+                    options={{ title: 'Ajouter une liste', headerTitleStyle: { alignItems: 'center' }, }}
                 />
                 <Stack.Screen
                     name='Detail'

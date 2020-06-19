@@ -46,6 +46,9 @@ export default StyleSheet.create({
     marginTop20: {
         marginTop: 20,
     },
+    marginTop10: {
+        marginTop: 10,
+    },
     marginTop40: {
         marginTop: 40,
     },
@@ -128,6 +131,19 @@ export default StyleSheet.create({
         backgroundColor: "#333333",
         borderRadius: 10,
     },
+    input: {
+        height: 50,
+        borderColor: "#888888",
+        borderWidth: 1,
+        borderRadius: 10,
+        width: width - 20,
+    },
+    textCenter: {
+        marginHorizontal: "auto",
+    },
+    floatLeft: {
+        textAlign: "left",
+    }
 
 
 
