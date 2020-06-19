@@ -18,11 +18,12 @@ function Event(props) {
 
                     <View style={[styles.dFlex, styles.alignStart, styles.justifyBetween, styles.marginTop20]}>
                         <View style={[styles.dFlexColumn]}>
+                            <Text style={[styles.textBold]}>Adresse de l'événement : </Text>
                             <Text>192 rue Paul</Text>
                             <Text>94500 CHAMPIGNY SUR MARNE</Text>
                         </View>
-                        <TouchableOpacity>
-                            <Text>
+                        <TouchableOpacity style={[styles.btnGreenOutLine]}>
+                            <Text style={[styles.textBold, styles.textGreen]}>
                                 Y aller >
                             </Text>
                         </TouchableOpacity>
@@ -33,7 +34,7 @@ function Event(props) {
                             <Text style={[styles.title]}>Participants :</Text>
                         </View>
                         <TouchableOpacity style={[styles.btnGreen]} onPress={() => navigation.navigate('AddFriends')}>
-                            <Text style={[styles.textWhite]}>
+                            <Text style={[styles.textWhite, styles.textBold]}>
                                 Inviter
                             </Text>
                         </TouchableOpacity>
@@ -88,7 +89,7 @@ function Event(props) {
                             <Text style={[styles.title]}>Listes :</Text>
                         </View>
                         <TouchableOpacity style={[styles.btnGreen]} onPress={() => navigation.navigate('AddListe')}>
-                            <Text style={[styles.textWhite]}>
+                            <Text style={[styles.textWhite, styles.textBold]}>
                                 Ajouter une liste
                             </Text>
                         </TouchableOpacity>
