@@ -13,7 +13,7 @@ function AddListe(props) {
                 <View style={[styles.container, styles.dFlexColumn, styles.justifyCenter, styles.alignCenter]}>
                     <TextInput style={[styles.input, styles.marginTop20]} placeholder={"Nom de votre liste"}></TextInput>
                     <TouchableOpacity style={[styles.btnGreen, styles.marginTop20, styles.textCenter]} type="submit">
-                        <Text style={[styles.textBold, styles.buttonText]}>Ajouter</Text>
+                        <Text style={[styles.textBold, styles.textWhite]}>Ajouter</Text>
                     </TouchableOpacity>
                 </View>
             </ScrollView>

@@ -21,7 +21,7 @@ function AddFriends(props) {
                             <Text style={[styles.textBold, styles.marginLeft5]}>Bill</Text>
                         </View>
                         <TouchableOpacity style={[styles.btnGreenOutLine]}>
-                            <Text style={[styles.textGreen]}>
+                            <Text style={[styles.textGreen, styles.textBold]}>
                                 Inviter
                             </Text>
                         </TouchableOpacity>
@@ -35,7 +35,7 @@ function AddFriends(props) {
                             <Text style={[styles.textBold, styles.marginLeft5]}>Bill</Text>
                         </View>
                         <TouchableOpacity style={[styles.btnGreenOutLine]}>
-                            <Text style={[styles.textGreen]}>
+                            <Text style={[styles.textGreen, styles.textBold]}>
                                 Inviter
                             </Text>
                         </TouchableOpacity>
@@ -49,7 +49,7 @@ function AddFriends(props) {
                             <Text style={[styles.textBold, styles.marginLeft5]}>Bill</Text>
                         </View>
                         <TouchableOpacity style={[styles.btnGreenOutLine]}>
-                            <Text style={[styles.textGreen]}>
+                            <Text style={[styles.textGreen, styles.textBold]}>
                                 Inviter
                             </Text>
                         </TouchableOpacity>

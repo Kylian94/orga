@@ -2,6 +2,7 @@ import React from 'react'
 import { View, Text, Image } from 'react-native'
 import styles from '../style/Style'
 
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import { ScrollView, TouchableOpacity, Button, TextInput } from 'react-native-gesture-handler';
 
@@ -12,8 +13,8 @@ function Liste(props) {
             <ScrollView >
                 <View style={[styles.container, styles.dFlex, styles.infos, styles.justifyBetween, styles.alignCenter]}>
                     <Text style={[styles.textBold]}>Nourriture</Text>
-                    <TouchableOpacity onPress={() => navigation.navigate('AddItem')}>
-                        <Text style={[styles.textBold]}>+</Text>
+                    <TouchableOpacity style={[styles.marginLeft40]}>
+                        <Icon name="plus-circle" color={"#21B3C6"} size={16} />
                     </TouchableOpacity>
                 </View>
                 <View style={[styles.marginTop20, styles.marginBottom40]}>
@@ -30,10 +31,10 @@ function Liste(props) {
                         </View>
 
                         <TouchableOpacity>
-                            <Text style={[styles.textBold]}>-</Text>
+                            <Icon name="minus-circle" color={"gray"} size={16} />
                         </TouchableOpacity>
                         <TouchableOpacity style={[styles.marginLeft40]}>
-                            <Text style={[styles.textBold]}>+</Text>
+                            <Icon name="plus-circle" color={"#21B3C6"} size={16} />
                         </TouchableOpacity>
                     </View>
                     <View style={[styles.container, styles.dFlex, styles.justifyBetween, styles.alignCenter]}>
@@ -48,10 +49,10 @@ function Liste(props) {
                         </View>
 
                         <TouchableOpacity>
-                            <Text style={[styles.textBold]}>-</Text>
+                            <Icon name="minus-circle" color={"gray"} size={16} />
                         </TouchableOpacity>
                         <TouchableOpacity style={[styles.marginLeft40]}>
-                            <Text style={[styles.textBold]}>+</Text>
+                            <Icon name="plus-circle" color={"#21B3C6"} size={16} />
                         </TouchableOpacity>
                     </View>
                     <View style={[styles.container, styles.dFlex, styles.justifyBetween, styles.alignCenter]}>
@@ -66,10 +67,10 @@ function Liste(props) {
                         </View>
 
                         <TouchableOpacity>
-                            <Text style={[styles.textBold]}>-</Text>
+                            <Icon name="minus-circle" color={"gray"} size={16} />
                         </TouchableOpacity>
                         <TouchableOpacity style={[styles.marginLeft40]}>
-                            <Text style={[styles.textBold]}>+</Text>
+                            <Icon name="plus-circle" color={"#21B3C6"} size={16} />
                         </TouchableOpacity>
                     </View>
 

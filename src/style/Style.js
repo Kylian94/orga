@@ -36,6 +36,10 @@ export default StyleSheet.create({
         fontWeight: 'bold',
         fontFamily: "Montserrat"
     },
+    addImage: {
+        bottom: 50,
+        left: width - 70,
+    },
     canvas: {
 
         width: width - 20,
@@ -51,6 +55,12 @@ export default StyleSheet.create({
     },
     marginTop40: {
         marginTop: 40,
+    },
+    marginTop60: {
+        marginTop: 60,
+    },
+    marginTop30: {
+        marginTop: 30,
     },
     marginBottom20: {
         marginBottom: 20,
@@ -69,6 +79,12 @@ export default StyleSheet.create({
     },
     marginRight30: {
         marginRight: 30,
+    },
+    positionRelative: {
+        position: "relative"
+    },
+    postionAbsolute: {
+        position: "absolute"
     },
     dFlex: {
         flex: 1,
@@ -131,7 +147,7 @@ export default StyleSheet.create({
     listCard: {
         height: 60,
         width: width - 20,
-        backgroundColor: "#333333",
+        backgroundColor: "#8ecad1",
         borderRadius: 10,
     },
     input: {
@@ -146,7 +162,41 @@ export default StyleSheet.create({
     },
     floatLeft: {
         textAlign: "left",
-    }
+    },
+    radioText: {
+        marginRight: 15,
+        fontSize: 14,
+        color: '#000',
+        fontWeight: '700'
+    },
+    radioCircle: {
+        height: 30,
+        width: 30,
+        borderRadius: 100,
+        borderWidth: 2,
+        borderColor: '#21B3C6',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    selectedRb: {
+        width: 15,
+        height: 15,
+        borderRadius: 50,
+        backgroundColor: '#21B3C6',
+    },
+    result: {
+        marginTop: 20,
+        color: 'white',
+        fontWeight: '600',
+        backgroundColor: '#F3FBFE',
+    },
+    radioForm: {
+        marginBottom: 35,
+        marginRight: 60,
+        alignItems: 'center',
+        flexDirection: 'row',
+        justifyContent: 'center',
+    },
 
 
 
