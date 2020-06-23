@@ -7,18 +7,12 @@ var width = Dimensions.get('window').width;
 export default StyleSheet.create({
 
     container: {
-        flex: 1,
-
         paddingHorizontal: 10,
-        //justifyContent: 'center',
-        alignItems: 'flex-start',
-        //backgroundColor: '#ebebeb'
     },
     title: {
         color: '#101010',
         fontSize: 24,
         fontWeight: 'bold',
-
     },
     buttonContainer: {
         backgroundColor: '#222',
@@ -37,13 +31,22 @@ export default StyleSheet.create({
         fontFamily: "Montserrat"
     },
     addImage: {
-        bottom: 50,
+        marginTop: -30,
+        bottom: 20,
         left: width - 70,
     },
+    dnone: {
+        display: "none",
+    },
+    bgGray: {
+        backgroundColor: "#eeeeee",
+    },
+    bgWhite: {
+        backgroundColor: "#fff",
+    },
     canvas: {
-
         width: width - 20,
-        height: 120,
+        height: 150,
         borderRadius: 5,
         borderWidth: 1,
     },
@@ -59,8 +62,14 @@ export default StyleSheet.create({
     marginTop60: {
         marginTop: 60,
     },
+    marginTop80: {
+        marginTop: 75,
+    },
     marginTop30: {
         marginTop: 30,
+    },
+    marginBottom10: {
+        marginBottom: 10,
     },
     marginBottom20: {
         marginBottom: 20,
@@ -80,11 +89,13 @@ export default StyleSheet.create({
     marginRight30: {
         marginRight: 30,
     },
-    positionRelative: {
-        position: "relative"
-    },
     postionAbsolute: {
-        position: "absolute"
+        position: "absolute",
+        left: 0,
+        top: 0,
+    },
+    positionRelative: {
+        position: "relative",
     },
     dFlex: {
         flex: 1,
@@ -157,6 +168,14 @@ export default StyleSheet.create({
         borderRadius: 10,
         width: width - 20,
     },
+    input2block: {
+        height: 50,
+        borderColor: "#888888",
+        borderWidth: 1,
+        borderRadius: 10,
+        width: (width - 30) / 2,
+        marginRight: 10,
+    },
     textCenter: {
         marginHorizontal: "auto",
     },
@@ -167,14 +186,13 @@ export default StyleSheet.create({
         marginRight: 15,
         fontSize: 14,
         color: '#000',
-        fontWeight: '700'
     },
     radioCircle: {
         height: 30,
         width: 30,
         borderRadius: 100,
         borderWidth: 2,
-        borderColor: '#21B3C6',
+        borderColor: '#ccc',
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -191,7 +209,6 @@ export default StyleSheet.create({
         backgroundColor: '#F3FBFE',
     },
     radioForm: {
-        marginBottom: 35,
         marginRight: 60,
         alignItems: 'center',
         flexDirection: 'row',

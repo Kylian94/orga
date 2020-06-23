@@ -13,7 +13,7 @@ function Liste(props) {
             <ScrollView >
                 <View style={[styles.container, styles.dFlex, styles.infos, styles.justifyBetween, styles.alignCenter]}>
                     <Text style={[styles.textBold]}>Nourriture</Text>
-                    <TouchableOpacity style={[styles.marginLeft40]}>
+                    <TouchableOpacity style={[styles.marginLeft40]} onPress={() => navigation.navigate('AddItem')}>
                         <Icon name="plus-circle" color={"#21B3C6"} size={16} />
                     </TouchableOpacity>
                 </View>

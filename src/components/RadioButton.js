@@ -16,7 +16,7 @@ export default class RadioButton extends Component {
             <View>
 
 
-                <View style={[styles.dFlex, styles.marginTop10]}>
+                <View style={[styles.dFlex]}>
                     {PROP.map(res => {
                         return (
                             <View key={res.key} style={[styles.radioForm]}>
@@ -35,7 +35,7 @@ export default class RadioButton extends Component {
                     })}
 
                 </View>
-                <Text style={[styles.marginTop20]}> Selected: {this.state.value} </Text>
+                {/* <Text style={[styles.marginTop20]}> Selected: {this.state.value} </Text> */}
             </View>
         );
     }

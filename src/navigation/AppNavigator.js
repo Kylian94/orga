@@ -26,19 +26,14 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 const Stack = createStackNavigator()
 const Tab = createBottomTabNavigator()
 
-function getTabHeaderTitle(route: RouteProp<RootParamList, 'BottomTabs'> & { state?: State }) {
-    const routeName = route.state ? route.state.routeNames[route.state.index] : route.params?.screen || 'Feed';
-    return routeName;
-  }
-
 function MainTabNavigator() {
     return (
         <Tab.Navigator
             screenOptions={({ route }) => ({
                 tabBarIcon: ({ focused, color, size }) => {
                     let iconName;
-                    if (route.name === 'Accueil') {
-                        iconName = focused ? 'home' : 'home';
+                    if (route.name === 'Mes Events') {
+                        iconName = focused ? 'calendar' : 'calendar';
                     } else if (route.name === 'Profil') {
                         iconName = focused ? 'user' : 'user';
                     } else if (route.name === 'Créer un Event') {
@@ -53,8 +48,8 @@ function MainTabNavigator() {
                 activeTintColor: '#21B3C6',
                 inactiveTintColor: 'gray',
             }}>
-            <Tab.Screen name="Accueil" component={Home} />
-            <Tab.Screen name="Créer un Event" component={AddEvent}  />
+            <Tab.Screen name="Mes Events" component={Home} />
+            <Tab.Screen name="Créer un Event" component={AddEvent} />
             <Tab.Screen name="Profil" component={Profil} />
         </Tab.Navigator>
     )
