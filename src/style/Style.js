@@ -155,6 +155,11 @@ export default StyleSheet.create({
         width: 50,
         borderRadius: 25
     },
+    account_picture: {
+        height: 150,
+        width: 150,
+        borderRadius: 75
+    },
     listCard: {
         height: 60,
         width: width - 20,

@@ -15,6 +15,10 @@ import AddListe from '../screens/AddListeScreen'
 import Liste from '../screens/ListeScreen'
 import AddItem from '../screens/AddItemScreen'
 import Profil from '../screens/ProfilScreen'
+import Account from '../screens/AccountScreen'
+import Friends from '../screens/FriendsScreen'
+import FriendsRequest from '../screens/FriendsRequestScreen'
+import SearchFriends from '../screens/SearchFriendsScreen'
 
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
@@ -50,7 +54,7 @@ function MainTabNavigator() {
             }}>
             <Tab.Screen name="Mes Events" component={Home} />
             <Tab.Screen name="Créer un Event" component={AddEvent} />
-            <Tab.Screen name="Profil" component={Profil} />
+            <Tab.Screen name="Profil" component={Profil} title={'Mon compte'} />
         </Tab.Navigator>
     )
 }
@@ -105,9 +109,24 @@ function MainStackNavigator() {
                     options={{ title: 'Ajouter un item', headerTitleStyle: { alignItems: 'center' }, }}
                 />
                 <Stack.Screen
-                    name='Detail'
-                    component={Detail}
-                    options={{ title: 'Detail Screen' }}
+                    name='Account'
+                    component={Account}
+                    options={{ title: 'Mon Profil' }}
+                />
+                <Stack.Screen
+                    name='Friends'
+                    component={Friends}
+                    options={{ title: 'Mes amis' }}
+                />
+                <Stack.Screen
+                    name='FriendsRequest'
+                    component={FriendsRequest}
+                    options={{ title: 'Mes demandes d\'amis' }}
+                />
+                <Stack.Screen
+                    name='SearchFriends'
+                    component={SearchFriends}
+                    options={{ title: 'Ajouter un ami' }}
                 />
                 <Stack.Screen
                     name='Login'
