@@ -45,6 +45,7 @@ export default class Event extends React.Component {
                     <View style={[this.state.accepted == 1 ? styles.bgGray : styles.dnone]}>
                         <Image source={{ uri: 'https://img.20mn.fr/Hm_mQqfYRW2-3-uB-i9qAQ/830x532_carte-localisation-place-trocadero-paris.jpg' }} style={[styles.map,]}></Image>
                         <View style={[styles.container]}>
+
                             <View style={[styles.dFlex, styles.alignStart, styles.justifyBetween, styles.marginTop10]}>
                                 <View style={[styles.dFlexColumn]}>
                                     <Text style={[styles.textBold]}>Adresse de l'événement : </Text>
@@ -113,6 +114,7 @@ export default class Event extends React.Component {
                                     <Text style={[styles.textBold]}>Bill</Text>
                                 </View>
                             </ScrollView>
+
                             <View style={[styles.dFlex, styles.alignCenter, styles.justifyBetween, styles.marginTop40, styles.marginBottom20]}>
                                 <View style={[styles.dFlexColumn]}>
                                     <Text style={[styles.title]}>Listes :</Text>
@@ -130,21 +132,22 @@ export default class Event extends React.Component {
                                     <Text style={[styles.buttonText, styles.marginRight30]}>></Text>
                                 </TouchableOpacity>
                             </View>
+
                             <View style={[styles.listCard, styles.dFlex, styles.alignCenter, styles.justifyBetween, styles.marginBottom20]}>
                                 <Text style={[styles.buttonText, styles.textBold, styles.marginLeft20]}>Nourriture</Text>
                                 <TouchableOpacity onPress={() => navigation.navigate('Liste')}>
                                     <Text style={[styles.buttonText, styles.marginRight30]}>></Text>
                                 </TouchableOpacity>
                             </View>
+
                             <View style={[styles.listCard, styles.dFlex, styles.alignCenter, styles.justifyBetween, styles.marginBottom20]}>
                                 <Text style={[styles.buttonText, styles.textBold, styles.marginLeft20]}>Nourriture</Text>
                                 <TouchableOpacity onPress={() => navigation.navigate('Liste')}>
                                     <Text style={[styles.buttonText, styles.marginRight30]}>></Text>
                                 </TouchableOpacity>
                             </View>
+
                         </View>
-
-
 
                     </View>
 

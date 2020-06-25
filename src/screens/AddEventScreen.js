@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, TouchableOpacity, Image, TextInput } from 'react-native'
+import { View, Text, TouchableOpacity, Image, TextInput, CheckBox } from 'react-native'
 import styles from '../style/Style'
 import { ScrollView } from 'react-native-gesture-handler';
 import axios from 'axios';
@@ -18,7 +18,11 @@ export default class AddEvent extends React.Component {
         adress: "",
         zipcode: "",
         city: "",
+        checkbox1: false,
+        checkbox2: false,
+        checkbox3: false,
     }
+
 
 
     async componentDidMount() {
@@ -84,9 +88,26 @@ export default class AddEvent extends React.Component {
                     <Text style={[styles.bold, styles.marginTop20]}>Participants</Text>
                     <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                         <View style={[styles.marginTop20, styles.dFlexColumn, styles.alignCenter, styles.marginLeft5, styles.marginRight30]}>
-                            <Image resizeMode={'cover'}
-                                source={{ uri: 'https://i.stack.imgur.com/6FiRR.png' }}
-                                style={styles.profil_picture} />
+                            <CheckBox value={this.state.checkbox1}
+                                onChange={() => this.setState({ checkbox1: !this.state.checkbox1 })}></CheckBox><Image resizeMode={'cover'}
+                                    source={{ uri: 'https://i.stack.imgur.com/6FiRR.png' }}
+                                    style={styles.profil_picture} />
+                            <Text>John</Text>
+                            <Text style={[styles.textBold]}>Bill</Text>
+                        </View>
+                        <View style={[styles.marginTop20, styles.dFlexColumn, styles.alignCenter, styles.marginLeft5, styles.marginRight30]}>
+                            <CheckBox value={this.state.checkbox2}
+                                onChange={() => this.setState({ checkbox2: !this.state.checkbox2 })}></CheckBox><Image resizeMode={'cover'}
+                                    source={{ uri: 'https://i.stack.imgur.com/6FiRR.png' }}
+                                    style={styles.profil_picture} />
+                            <Text>John</Text>
+                            <Text style={[styles.textBold]}>Bill</Text>
+                        </View>
+                        <View style={[styles.marginTop20, styles.dFlexColumn, styles.alignCenter, styles.marginLeft5, styles.marginRight30]}>
+                            <CheckBox value={this.state.checkbox3}
+                                onChange={() => this.setState({ checkbox3: !this.state.checkbox3 })}></CheckBox><Image resizeMode={'cover'}
+                                    source={{ uri: 'https://i.stack.imgur.com/6FiRR.png' }}
+                                    style={styles.profil_picture} />
                             <Text>John</Text>
                             <Text style={[styles.textBold]}>Bill</Text>
                         </View>
@@ -111,20 +132,7 @@ export default class AddEvent extends React.Component {
                             <Text>John</Text>
                             <Text style={[styles.textBold]}>Bill</Text>
                         </View>
-                        <View style={[styles.marginTop20, styles.dFlexColumn, styles.alignCenter, styles.marginLeft5, styles.marginRight30]}>
-                            <Image resizeMode={'cover'}
-                                source={{ uri: 'https://i.stack.imgur.com/6FiRR.png' }}
-                                style={styles.profil_picture} />
-                            <Text>John</Text>
-                            <Text style={[styles.textBold]}>Bill</Text>
-                        </View>
-                        <View style={[styles.marginTop20, styles.dFlexColumn, styles.alignCenter, styles.marginLeft5, styles.marginRight30]}>
-                            <Image resizeMode={'cover'}
-                                source={{ uri: 'https://i.stack.imgur.com/6FiRR.png' }}
-                                style={styles.profil_picture} />
-                            <Text>John</Text>
-                            <Text style={[styles.textBold]}>Bill</Text>
-                        </View>
+
                     </ScrollView>
                 </View >
                 <View style={[styles.dFlexColumn, styles.alignCenter]}>

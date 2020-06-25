@@ -10,12 +10,12 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 export default class Home extends React.Component {
 
     state = {
-        events: []
+        events: [],
+
     }
 
-    async componentDidMount() {
-        const events = await ajax.fetchEvents();
-        this.setState({ events });
+    componentDidMount() {
+        ajax.fetchEvents();
     }
 
     render() {
