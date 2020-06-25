@@ -16,7 +16,7 @@ export default class Event extends React.Component {
         return (
             <View >
                 <ScrollView>
-                    <Image source={{ uri: 'https://i.stack.imgur.com/6FiRR.png' }} style={[styles.map]}></Image>
+                    <Image source={require('../images/bg-event-1.jpeg')} style={[styles.map]}></Image>
 
 
                     <View style={[styles.container, styles.dFlex, styles.alignCenter, styles.justifyBetween, styles.marginBottom10, styles.marginTop10]}>
@@ -127,23 +127,23 @@ export default class Event extends React.Component {
                             </View>
 
                             <View style={[styles.listCard, styles.dFlex, styles.alignCenter, styles.justifyBetween, styles.marginBottom20]}>
-                                <Text style={[styles.buttonText, styles.textBold, styles.marginLeft20]}>Nourriture</Text>
+                                <Text style={[styles.buttonTextGreen, styles.textBold, styles.marginLeft20]}>Nourriture</Text>
                                 <TouchableOpacity onPress={() => navigation.navigate('Liste')}>
-                                    <Text style={[styles.buttonText, styles.marginRight30]}>></Text>
+                                    <Text style={[styles.buttonTextGreen, styles.marginRight30]}>></Text>
                                 </TouchableOpacity>
                             </View>
 
                             <View style={[styles.listCard, styles.dFlex, styles.alignCenter, styles.justifyBetween, styles.marginBottom20]}>
-                                <Text style={[styles.buttonText, styles.textBold, styles.marginLeft20]}>Nourriture</Text>
+                                <Text style={[styles.buttonTextGreen, styles.textBold, styles.marginLeft20]}>Nourriture</Text>
                                 <TouchableOpacity onPress={() => navigation.navigate('Liste')}>
-                                    <Text style={[styles.buttonText, styles.marginRight30]}>></Text>
+                                    <Text style={[styles.buttonTextGreen, styles.marginRight30]}>></Text>
                                 </TouchableOpacity>
                             </View>
 
                             <View style={[styles.listCard, styles.dFlex, styles.alignCenter, styles.justifyBetween, styles.marginBottom20]}>
-                                <Text style={[styles.buttonText, styles.textBold, styles.marginLeft20]}>Nourriture</Text>
+                                <Text style={[styles.buttonTextGreen, styles.textBold, styles.marginLeft20]}>Nourriture</Text>
                                 <TouchableOpacity onPress={() => navigation.navigate('Liste')}>
-                                    <Text style={[styles.buttonText, styles.marginRight30]}>></Text>
+                                    <Text style={[styles.buttonTextGreen, styles.marginRight30]}>></Text>
                                 </TouchableOpacity>
                             </View>
 

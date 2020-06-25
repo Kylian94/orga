@@ -24,6 +24,10 @@ export default StyleSheet.create({
         fontSize: 20,
         color: '#fff'
     },
+    buttonTextGreen: {
+        fontSize: 20,
+        color: '#21B3C6'
+    },
     titleEvent: {
         color: "#21B3C6",
         fontSize: 20,
@@ -163,7 +167,9 @@ export default StyleSheet.create({
     listCard: {
         height: 60,
         width: width - 20,
-        backgroundColor: "#8ecad1",
+        borderColor: "#8ecad1",
+        borderWidth: 1,
+        color: "#8ecad1",
         borderRadius: 10,
     },
     input: {

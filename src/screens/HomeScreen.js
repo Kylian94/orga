@@ -28,7 +28,7 @@ export default class Home extends React.Component {
                     <View style={styles.marginBottom40}>
                         <TouchableOpacity onPress={() => navigation.navigate('Event')}>
                             <Image resizeMode={'cover'}
-                                source={{ uri: 'https://i.stack.imgur.com/6FiRR.png' }}
+                                source={require('../images/bg-event-1.jpeg')}
                                 style={styles.canvas} />
                         </TouchableOpacity>
                         <View style={[styles.dFlex, styles.justifyBetween, styles.alignCenter, styles.marginTop10]}>
@@ -47,7 +47,7 @@ export default class Home extends React.Component {
                     <View style={styles.marginBottom40}>
                         <TouchableOpacity onPress={() => navigation.navigate('Event')}>
                             <Image resizeMode={'cover'}
-                                source={{ uri: 'https://i.stack.imgur.com/6FiRR.png' }}
+                                source={require('../images/bg-event-2.jpeg')}
                                 style={styles.canvas} />
                         </TouchableOpacity>
                         <View style={[styles.dFlex, styles.justifyBetween, styles.alignCenter, styles.marginTop10]}>
