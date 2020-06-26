@@ -6,6 +6,9 @@ import axios from 'axios';
 import ajax from '../services/FetchEvents';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
+import AsyncStorage from '@react-native-community/async-storage';
+
+
 
 export default class Profil extends React.Component {
 
@@ -16,6 +19,33 @@ export default class Profil extends React.Component {
     async componentDidMount() {
         const events = await ajax.fetchEvents();
         this.setState({ events });
+    }
+
+    logout = () => {
+        const { navigation } = this.props;
+        console.log('test');
+        const URI = 'http://api-orga.kp-dev.fr';
+        return fetch(URI + "/api/logout", {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+
+        })
+            .then((response) => {
+                AsyncStorage.removeItem('token')
+                navigation.navigate('Login')
+                // Si un code erreur a été détecté on déclenche une erreur
+                if (!response.ok) {
+                    throw Error(response.statusText);
+                }
+
+                return response;
+
+            })
+            .then(response => response.json())
+            .catch(e => console.log(e))
     }
 
     render() {
@@ -59,6 +89,10 @@ export default class Profil extends React.Component {
                         <Text style={[styles.textBold, styles.textGreen, styles.marginTop10, styles.marginBottom10,]}>
                             Ajouter un ami
                             </Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity style={[{ alignSelf: "center" }, styles.marginTop40]} onPress={() => this.logout()}>
+                        <Text style={[styles.textGreen,]}>Se déconnecter</Text>
                     </TouchableOpacity>
                 </View>
             </View >

@@ -11,8 +11,12 @@ function AddItem(props) {
         <View >
             <ScrollView >
                 <View style={[styles.container, styles.dFlexColumn, styles.justifyCenter, styles.alignCenter]}>
-                    <TextInput style={[styles.input, styles.marginTop20]} placeholder={"Nom de ce que vous ramenez"}></TextInput>
-                    <TouchableOpacity style={[styles.btnGreen, styles.marginTop20, styles.textCenter]} type="submit">
+                    <View style={[styles.dFlexColumn, { alignSelf: "flex-start", }, styles.marginTop20]}>
+                        <Text style={[styles.bold]}>Qu'est-ce que vous allez ramener ?</Text>
+                    </View>
+
+                    <TextInput style={[styles.input, styles.marginTop20]} placeholder={"Du pain, des olives, etc"}></TextInput>
+                    <TouchableOpacity style={[styles.btnGreen, styles.marginTop10, styles.textCenter]} type="submit">
                         <Text style={[styles.textBold, styles.textWhite]}>Ajouter</Text>
                     </TouchableOpacity>
                 </View>

@@ -73,42 +73,42 @@ export default class Event extends React.Component {
                             <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                                 <View style={[styles.marginTop20, styles.dFlexColumn, styles.alignCenter, styles.marginLeft5, styles.marginRight30]}>
                                     <Image resizeMode={'cover'}
-                                        source={{ uri: 'https://i.stack.imgur.com/6FiRR.png' }}
+                                        source={require('../images/user-default.jpg')}
                                         style={styles.profil_picture} />
                                     <Text>John</Text>
                                     <Text style={[styles.textBold]}>Bill</Text>
                                 </View>
                                 <View style={[styles.marginTop20, styles.dFlexColumn, styles.alignCenter, styles.marginLeft5, styles.marginRight30]}>
                                     <Image resizeMode={'cover'}
-                                        source={{ uri: 'https://i.stack.imgur.com/6FiRR.png' }}
+                                        source={require('../images/user-default.jpg')}
                                         style={styles.profil_picture} />
                                     <Text>John</Text>
                                     <Text style={[styles.textBold]}>Bill</Text>
                                 </View>
                                 <View style={[styles.marginTop20, styles.dFlexColumn, styles.alignCenter, styles.marginLeft5, styles.marginRight30]}>
                                     <Image resizeMode={'cover'}
-                                        source={{ uri: 'https://i.stack.imgur.com/6FiRR.png' }}
+                                        source={require('../images/user-default.jpg')}
                                         style={styles.profil_picture} />
                                     <Text>John</Text>
                                     <Text style={[styles.textBold]}>Bill</Text>
                                 </View>
                                 <View style={[styles.marginTop20, styles.dFlexColumn, styles.alignCenter, styles.marginLeft5, styles.marginRight30]}>
                                     <Image resizeMode={'cover'}
-                                        source={{ uri: 'https://i.stack.imgur.com/6FiRR.png' }}
+                                        source={require('../images/user-default.jpg')}
                                         style={styles.profil_picture} />
                                     <Text>John</Text>
                                     <Text style={[styles.textBold]}>Bill</Text>
                                 </View>
                                 <View style={[styles.marginTop20, styles.dFlexColumn, styles.alignCenter, styles.marginLeft5, styles.marginRight30]}>
                                     <Image resizeMode={'cover'}
-                                        source={{ uri: 'https://i.stack.imgur.com/6FiRR.png' }}
+                                        source={require('../images/user-default.jpg')}
                                         style={styles.profil_picture} />
                                     <Text>John</Text>
                                     <Text style={[styles.textBold]}>Bill</Text>
                                 </View>
                                 <View style={[styles.marginTop20, styles.dFlexColumn, styles.alignCenter, styles.marginLeft5, styles.marginRight30]}>
                                     <Image resizeMode={'cover'}
-                                        source={{ uri: 'https://i.stack.imgur.com/6FiRR.png' }}
+                                        source={require('../images/user-default.jpg')}
                                         style={styles.profil_picture} />
                                     <Text>John</Text>
                                     <Text style={[styles.textBold]}>Bill</Text>

@@ -14,8 +14,10 @@ export default class Home extends React.Component {
 
     }
 
-    componentDidMount() {
-        ajax.fetchEvents();
+    async componentDidMount() {
+        const data = await ajax.fetchEvents();
+        this.setState({ events: data });
+
     }
 
     render() {
@@ -62,6 +64,9 @@ export default class Home extends React.Component {
                             <Text ellipsizeMode='tail' numberOfLines={2} style={[styles.marginLeft5]}>15/10/2020</Text>
                         </View>
                     </View>
+
+                    <Text onPress={() => navigation.navigate('Login')}>Connexion</Text>
+                    <Text onPress={() => navigation.navigate('Register')}>Inscription</Text>
                 </ScrollView>
 
             </View >

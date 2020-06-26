@@ -50,7 +50,7 @@ export default class AddEvent extends React.Component {
                 <View style={[styles.positionRelative]}>
 
                     <Image
-                        source={{ uri: 'https://i.stack.imgur.com/6FiRR.png' }}
+                        source={require('../images/default-image.png')}
                         style={[styles.map]} />
                     <TouchableOpacity style={[styles.positionAbsolute, styles.addImage]}>
                         <Icon name={"plus-circle"} color={"#21B3C6"} size={42} style={[]} />
@@ -89,16 +89,17 @@ export default class AddEvent extends React.Component {
                     <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                         <View style={[styles.marginTop20, styles.dFlexColumn, styles.alignCenter, styles.marginLeft5, styles.marginRight30]}>
                             <CheckBox value={this.state.checkbox1}
-                                onChange={() => this.setState({ checkbox1: !this.state.checkbox1 })}></CheckBox><Image resizeMode={'cover'}
-                                    source={{ uri: 'https://i.stack.imgur.com/6FiRR.png' }}
-                                    style={styles.profil_picture} />
+                                onChange={() => this.setState({ checkbox1: !this.state.checkbox1 })}></CheckBox>
+                            <Image resizeMode={'cover'}
+                                source={require('../images/user-default.jpg')}
+                                style={styles.profil_picture} />
                             <Text>John</Text>
                             <Text style={[styles.textBold]}>Bill</Text>
                         </View>
                         <View style={[styles.marginTop20, styles.dFlexColumn, styles.alignCenter, styles.marginLeft5, styles.marginRight30]}>
                             <CheckBox value={this.state.checkbox2}
                                 onChange={() => this.setState({ checkbox2: !this.state.checkbox2 })}></CheckBox><Image resizeMode={'cover'}
-                                    source={{ uri: 'https://i.stack.imgur.com/6FiRR.png' }}
+                                    source={require('../images/user-default.jpg')}
                                     style={styles.profil_picture} />
                             <Text>John</Text>
                             <Text style={[styles.textBold]}>Bill</Text>
@@ -106,28 +107,34 @@ export default class AddEvent extends React.Component {
                         <View style={[styles.marginTop20, styles.dFlexColumn, styles.alignCenter, styles.marginLeft5, styles.marginRight30]}>
                             <CheckBox value={this.state.checkbox3}
                                 onChange={() => this.setState({ checkbox3: !this.state.checkbox3 })}></CheckBox><Image resizeMode={'cover'}
-                                    source={{ uri: 'https://i.stack.imgur.com/6FiRR.png' }}
+                                    source={require('../images/user-default.jpg')}
                                     style={styles.profil_picture} />
                             <Text>John</Text>
                             <Text style={[styles.textBold]}>Bill</Text>
                         </View>
                         <View style={[styles.marginTop20, styles.dFlexColumn, styles.alignCenter, styles.marginLeft5, styles.marginRight30]}>
+                            <CheckBox value={this.state.checkbox1}
+                                onChange={() => this.setState({ checkbox1: !this.state.checkbox1 })}></CheckBox>
                             <Image resizeMode={'cover'}
-                                source={{ uri: 'https://i.stack.imgur.com/6FiRR.png' }}
+                                source={require('../images/user-default.jpg')}
                                 style={styles.profil_picture} />
                             <Text>John</Text>
                             <Text style={[styles.textBold]}>Bill</Text>
                         </View>
                         <View style={[styles.marginTop20, styles.dFlexColumn, styles.alignCenter, styles.marginLeft5, styles.marginRight30]}>
+                            <CheckBox value={this.state.checkbox1}
+                                onChange={() => this.setState({ checkbox1: !this.state.checkbox1 })}></CheckBox>
                             <Image resizeMode={'cover'}
-                                source={{ uri: 'https://i.stack.imgur.com/6FiRR.png' }}
+                                source={require('../images/user-default.jpg')}
                                 style={styles.profil_picture} />
                             <Text>John</Text>
                             <Text style={[styles.textBold]}>Bill</Text>
                         </View>
                         <View style={[styles.marginTop20, styles.dFlexColumn, styles.alignCenter, styles.marginLeft5, styles.marginRight30]}>
+                            <CheckBox value={this.state.checkbox1}
+                                onChange={() => this.setState({ checkbox1: !this.state.checkbox1 })}></CheckBox>
                             <Image resizeMode={'cover'}
-                                source={{ uri: 'https://i.stack.imgur.com/6FiRR.png' }}
+                                source={require('../images/user-default.jpg')}
                                 style={styles.profil_picture} />
                             <Text>John</Text>
                             <Text style={[styles.textBold]}>Bill</Text>
