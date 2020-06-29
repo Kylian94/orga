@@ -6,6 +6,8 @@ import axios from 'axios';
 import ajax from '../services/FetchEvents';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
+
+
 import AsyncStorage from '@react-native-community/async-storage';
 
 
@@ -13,16 +15,20 @@ import AsyncStorage from '@react-native-community/async-storage';
 export default class Profil extends React.Component {
 
     state = {
-        events: []
+        events: [],
+        token: null,
     }
 
     async componentDidMount() {
         const events = await ajax.fetchEvents();
+        let token = AsyncStorage.getItem('token');
+        this.setState('token', token);
         this.setState({ events });
+
     }
 
     logout = () => {
-        const { navigation } = this.props;
+
         console.log('test');
         const URI = 'http://api-orga.kp-dev.fr';
         return fetch(URI + "/api/logout", {
@@ -30,12 +36,13 @@ export default class Profil extends React.Component {
             headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
+                Authorization: 'Bearer ' + this.state.token
             },
 
         })
             .then((response) => {
                 AsyncStorage.removeItem('token')
-                navigation.navigate('Login')
+
                 // Si un code erreur a été détecté on déclenche une erreur
                 if (!response.ok) {
                     throw Error(response.statusText);
@@ -49,7 +56,7 @@ export default class Profil extends React.Component {
     }
 
     render() {
-        const { navigation } = this.props;
+
         return (
             <View style={styles.container}>
                 <View style={[styles.infos, styles.justifyCenter, styles.alignCenter]}>

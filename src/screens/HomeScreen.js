@@ -6,18 +6,62 @@ import axios from 'axios';
 import ajax from '../services/FetchEvents';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
+import AsyncStorage from '@react-native-community/async-storage';
+
 
 export default class Home extends React.Component {
 
     state = {
         events: [],
+        token: null,
 
     }
 
     async componentDidMount() {
-        const data = await ajax.fetchEvents();
-        this.setState({ events: data });
 
+        var value = await AsyncStorage.getItem('token')
+        this.setState({ token: value });
+
+
+        var data = await this.events();
+        console.log(data);
+        this.setState({ events: data });
+        //console.log(this.result);
+        //console.log(this.state.events);
+        console.log(this.state.token);
+    }
+
+    async _getStorageValue() {
+
+
+    }
+
+    events = () => {
+
+        //console.log('test');
+        const URI = 'http://api-orga.kp-dev.fr';
+        return fetch(URI + "/api/events", {
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                Authorization: 'Bearer ' + this.state.token
+            },
+
+        })
+            .then((response) => {
+
+                // Si un code erreur a été détecté on déclenche une erreur
+                if (!response.ok) {
+                    throw Error(response.statusText);
+                }
+                console.log(response);
+                //this.setState({ events: response });
+                return response;
+
+            })
+            .then(response => response.json())
+            .catch(e => console.log(e))
     }
 
     render() {
@@ -65,8 +109,8 @@ export default class Home extends React.Component {
                         </View>
                     </View>
 
-                    <Text onPress={() => navigation.navigate('Login')}>Connexion</Text>
-                    <Text onPress={() => navigation.navigate('Register')}>Inscription</Text>
+                    {/* <Text onPress={() => navigation.navigate('Login')}>Connexion</Text>
+                    <Text onPress={() => navigation.navigate('Register')}>Inscription</Text> */}
                 </ScrollView>
 
             </View >

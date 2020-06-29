@@ -33,44 +33,46 @@ import AsyncStorage from '@react-native-community/async-storage';
 const Stack = createStackNavigator()
 const Tab = createBottomTabNavigator()
 
-function MainTabNavigator() {
-    return (
-        <Tab.Navigator
-            screenOptions={({ route }) => ({
-                tabBarIcon: ({ focused, color, size }) => {
-                    let iconName;
-                    if (route.name === 'Mes Events') {
-                        iconName = focused ? 'calendar' : 'calendar';
-                    } else if (route.name === 'Profil') {
-                        iconName = focused ? 'user' : 'user';
-                    } else if (route.name === 'Créer un Event') {
-                        iconName = focused ? 'plus-circle' : 'plus-circle';
-                    }
+class MainTabNavigator extends React.Component {
+    render() {
+        return (
+            <Tab.Navigator
+                screenOptions={({ route }) => ({
+                    tabBarIcon: ({ focused, color, size }) => {
+                        let iconName;
+                        if (route.name === 'Mes Events') {
+                            iconName = focused ? 'calendar' : 'calendar';
+                        } else if (route.name === 'Profil') {
+                            iconName = focused ? 'user' : 'user';
+                        } else if (route.name === 'Créer un Event') {
+                            iconName = focused ? 'plus-circle' : 'plus-circle';
+                        }
 
-                    //You can return any component that you like here!
-                    return <Icon name={iconName} size={size} color={color} />;
-                },
-            })}
-            tabBarOptions={{
-                activeTintColor: '#21B3C6',
-                inactiveTintColor: 'gray',
-            }}>
-            <Tab.Screen name="Mes Events" component={Home} />
-            <Tab.Screen name="Créer un Event" component={AddEvent} />
-            <Tab.Screen name="Profil" component={Profil} title={'Mon compte'} />
-        </Tab.Navigator>
-    )
+                        //You can return any component that you like here!
+                        return <Icon name={iconName} size={size} color={color} />;
+                    },
+                })}
+                tabBarOptions={{
+                    activeTintColor: '#21B3C6',
+                    inactiveTintColor: 'gray',
+                }}>
+                <Tab.Screen name="Mes Events" component={Home} />
+                <Tab.Screen name="Créer un Event" component={AddEvent} />
+                <Tab.Screen name="Profil" component={Profil} title={'Mon compte'} />
+            </Tab.Navigator>
+        )
+    }
 }
 
-class  MainStackNavigator extends React.Component {
+class MainStackNavigator extends React.Component {
 
     state = {
         token: null,
     }
 
-     async componentDidMount() {
+    async componentDidMount() {
         let token = await AsyncStorage.getItem('token')
-        this.setState({token : token})
+        this.setState({ token: token })
     }
 
     render() {
@@ -91,80 +93,80 @@ class  MainStackNavigator extends React.Component {
                         headerBackTitleVisible: false
                     }}
                     headerMode='float'>
-                    { this.state.token ? (
+                    {this.state.token ? (
                         <>
-                        <Stack.Screen
-                        name='Home'
-                        component={MainTabNavigator}
-                        options={{ title: 'ORGA', headerTitleStyle: { alignSelf: 'center' }, }}
-                    />
-                    <Stack.Screen
-                        name='Event'
-                        component={Event}
-                        options={{ title: 'Votre Event', headerTitleStyle: { alignItems: 'center' }, }}
-                    />
-                    <Stack.Screen
-                        name='AddFriends'
-                        component={AddFriends}
-                        options={{ title: 'Ajouter des amis', headerTitleStyle: { alignItems: 'center' }, }}
-                    />
-                    <Stack.Screen
-                        name='AddListe'
-                        component={AddListe}
-                        options={{ title: 'Ajouter une liste', headerTitleStyle: { alignItems: 'center' }, }}
-                    />
-                    <Stack.Screen
-                        name='Liste'
-                        component={Liste}
-                        options={{ title: 'Liste', headerTitleStyle: { alignItems: 'center' }, }}
-                    />
-                    <Stack.Screen
-                        name='AddItem'
-                        component={AddItem}
-                        options={{ title: 'Ajouter un item', headerTitleStyle: { alignItems: 'center' }, }}
-                    />
-                    <Stack.Screen
-                        name='Account'
-                        component={Account}
-                        options={{ title: 'Mon Profil' }}
-                    />
-                    <Stack.Screen
-                        name='Friends'
-                        component={Friends}
-                        options={{ title: 'Mes amis' }}
-                    />
-                    <Stack.Screen
-                        name='FriendsRequest'
-                        component={FriendsRequest}
-                        options={{ title: 'Mes demandes d\'amis' }}
-                    />
-                    <Stack.Screen
-                        name='SearchFriends'
-                        component={SearchFriends}
-                        options={{ title: 'Ajouter un ami' }}
-                    />
-                    </>
+                            <Stack.Screen
+                                name='Home'
+                                component={MainTabNavigator}
+                                options={{ title: 'ORGA', headerTitleStyle: { alignSelf: 'center' }, }}
+                            />
+                            <Stack.Screen
+                                name='Event'
+                                component={Event}
+                                options={{ title: 'Votre Event', headerTitleStyle: { alignItems: 'center' }, }}
+                            />
+                            <Stack.Screen
+                                name='AddFriends'
+                                component={AddFriends}
+                                options={{ title: 'Ajouter des amis', headerTitleStyle: { alignItems: 'center' }, }}
+                            />
+                            <Stack.Screen
+                                name='AddListe'
+                                component={AddListe}
+                                options={{ title: 'Ajouter une liste', headerTitleStyle: { alignItems: 'center' }, }}
+                            />
+                            <Stack.Screen
+                                name='Liste'
+                                component={Liste}
+                                options={{ title: 'Liste', headerTitleStyle: { alignItems: 'center' }, }}
+                            />
+                            <Stack.Screen
+                                name='AddItem'
+                                component={AddItem}
+                                options={{ title: 'Ajouter un item', headerTitleStyle: { alignItems: 'center' }, }}
+                            />
+                            <Stack.Screen
+                                name='Account'
+                                component={Account}
+                                options={{ title: 'Mon Profil' }}
+                            />
+                            <Stack.Screen
+                                name='Friends'
+                                component={Friends}
+                                options={{ title: 'Mes amis' }}
+                            />
+                            <Stack.Screen
+                                name='FriendsRequest'
+                                component={FriendsRequest}
+                                options={{ title: 'Mes demandes d\'amis' }}
+                            />
+                            <Stack.Screen
+                                name='SearchFriends'
+                                component={SearchFriends}
+                                options={{ title: 'Ajouter un ami' }}
+                            />
+                        </>
                     ) : (
-                        <>
-                    <Stack.Screen
-                        name='Login'
-                        component={Login}
-                        options={{ title: 'Connexion' }}
-                    />
-                    <Stack.Screen
-                        name='Register'
-                        component={Register}
-                        options={{ title: 'Inscription' }}
-                    />
-                    </>
-                    ) }              
-                    
-                    
+                            <>
+                                <Stack.Screen
+                                    name='Login'
+                                    component={Login}
+                                    options={{ title: 'Connexion' }}
+                                />
+                                <Stack.Screen
+                                    name='Register'
+                                    component={Register}
+                                    options={{ title: 'Inscription' }}
+                                />
+                            </>
+                        )}
+
+
                 </Stack.Navigator>
             </NavigationContainer>
         )
     }
-        
+
 }
 
 export default MainStackNavigator

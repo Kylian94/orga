@@ -17,12 +17,13 @@ export default class Regsiter extends React.Component {
         lastname: null,
         email: null,
         password: null,
+        token: null,
     }
 
     async componentDidMount() {
 
     }
-    fetchRegister = async () => {
+    fetchRegister = () => {
 
         console.log('test');
         const URI = 'http://api-orga.kp-dev.fr';
@@ -49,7 +50,7 @@ export default class Regsiter extends React.Component {
             .then(response => response.json())
             .then(json => {
                 AsyncStorage.setItem('token', json.access_token)
-                navigate('Home')
+
             }
             )
             .catch(e => console.log(e))

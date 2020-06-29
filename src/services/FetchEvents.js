@@ -5,6 +5,7 @@ export default {
         try {
             let response = await fetch(URI + '/api/events');
             let responseJsonData = await response.json();
+
             console.log(responseJsonData);
             return responseJsonData;
 

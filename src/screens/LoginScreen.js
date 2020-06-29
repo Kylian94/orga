@@ -14,6 +14,7 @@ export default class Login extends React.Component {
         events: [],
         email: null,
         password: null,
+        token: null,
     }
 
     async componentDidMount() {
@@ -44,7 +45,8 @@ export default class Login extends React.Component {
             .then(response => response.json())
             .then(json => {
                 AsyncStorage.setItem('token', json.access_token)
-                navigate('Home')
+
+
             })
             .catch(e => console.log(e))
     }
