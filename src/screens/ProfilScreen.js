@@ -51,12 +51,12 @@ export default class Profil extends React.Component {
                 return response;
 
             })
-            .then(response => response.json())
+            .then(response => AsyncStorage.removeItem('token'))
             .catch(e => console.log(e))
     }
 
     render() {
-
+        const { navigation } = this.props;
         return (
             <View style={styles.container}>
                 <View style={[styles.infos, styles.justifyCenter, styles.alignCenter]}>
