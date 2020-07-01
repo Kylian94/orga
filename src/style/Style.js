@@ -14,6 +14,17 @@ export default StyleSheet.create({
         fontSize: 24,
         fontWeight: 'bold',
     },
+    subTitle: {
+        color: '#101010',
+        fontSize: 20,
+        fontWeight: 'bold',
+    },
+    fixedBottom: {
+        position: 'absolute',
+        left: 10,
+        right: 10,
+        bottom: 10
+    },
     buttonContainer: {
         backgroundColor: '#222',
         borderRadius: 5,

@@ -61,9 +61,19 @@ export default class Home extends React.Component {
 
     render() {
         const { navigation } = this.props;
-        const events = this.state.events
+        const events = null
         if (events == null) {
-            return null
+            return (
+                <View style={[styles.container, styles.textCenter, styles.dFlexColumn]}>
+                    <Text style={[styles.textCenter, styles.marginTop20, styles.bold, styles.subTitle]}>Vous n'avez pas encore d'événements à venir.</Text>
+                    <Text style={[styles.marginTop10]}>Créez votre événement et invitez vos amis</Text>
+                    <View style={[styles.fixedBottom, styles.bold]}>
+                        <Text style={[styles.bold]}>Informations :</Text>
+                        <Text style={[styles.marginTop10]}>Dans votre profil, vous pouvez rechercher et ajouter vos amis afin de les inviter et qu'ils puissent vous inviter à leurs événements.</Text>
+                    </View>
+
+                </View >
+            )
         } else {
             return (
 

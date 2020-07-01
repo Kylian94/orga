@@ -51,7 +51,7 @@ export default class Event extends React.Component {
         if (event == null) {
             return (
                 <View >
-                    <Text style={[styles.titleEvent, styles.textGreen]}>Anniv' de Julien {id}</Text>
+                    <Text style={[styles.textCenter, styles.marginTop20]}>Chargement</Text>
                 </View>
             )
         } else {

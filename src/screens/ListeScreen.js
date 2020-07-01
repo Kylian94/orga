@@ -57,7 +57,7 @@ export default class Liste extends React.Component {
         if (items == null) {
             return (
                 <View >
-                    <Text style={[styles.titleEvent, styles.textGreen]}>Anniv' de Julien</Text>
+                    <Text style={[styles.textCenter, styles.marginTop20]}>Aucun item dans cette liste, vous pouvez en ajouter en cliquant sur le +</Text>
                 </View>
             )
         } else {
@@ -72,23 +72,21 @@ export default class Liste extends React.Component {
                         </View>
                         <View style={[styles.marginTop20, styles.marginBottom40]}>
                             {items.map(function (item, index) {
-                                { console.log(item.users) }
                                 return (
                                     <View key={index} style={[styles.container, styles.dFlex, styles.justifyBetween, styles.alignCenter]}>
                                         <View style={[styles.dFlex, styles.alignCenter]}>
                                             <Image resizeMode={'cover'}
                                                 source={{ uri: 'https://i.stack.imgur.com/6FiRR.png' }}
                                                 style={styles.profil_picture} />
-
-                                            {item.users.map(function (user, index2) {
-                                                return (
-                                                    <View key={index2}>
-                                                        <Text style={[styles.marginLeft5]}>{user.firstname}</Text>
-                                                    </View>
-                                                )
-                                            })}
-
-
+                                            <View style={[{ display: "flex", }]}>
+                                                {item.users.map(function (user, index2) {
+                                                    return (
+                                                        <View key={index2}>
+                                                            <Text style={[styles.marginLeft5]}>{user.firstname}, </Text>
+                                                        </View>
+                                                    )
+                                                })}
+                                            </View>
                                             <Text> prend</Text>
                                             <Text style={[styles.bold]}> {item.title}</Text>
                                         </View>
