@@ -10,11 +10,11 @@ export default class Event extends React.Component {
 
     state = {
         event: null,
-        accepted: null,
+        accepted: 1,
         token: null
     };
     async componentDidMount() {
-
+        const { id } = this.props.route.params;
         var value = AsyncStorage.getItem('token');
         await value.then((e) => {
             this.setState({
@@ -22,44 +22,28 @@ export default class Event extends React.Component {
             })
         })
         console.log(this.state.token)
-        this.fetchEvent();
 
-    }
-    fetchEvent = () => {
-        const id = this.props.route.params;
-        console.log(id);
-        const URI = 'https:api-orga.kp-dev.fr';
-        return fetch(URI + "/api/events/" + id, {
-            method: 'POST',
+        return fetch('https://api-orga.kp-dev.fr/api/events/' + id, {
+            method: 'GET',
             headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
                 Authorization: 'Bearer ' + this.state.token,
             },
 
-        })
-            .then((response) => {
-                // Si un code erreur a été détecté on déclenche une erreur
-                if (!response.ok) {
-                    throw Error(response.statusText);
-                }
-                console.log(response);
-                return response;
-            })
-            .then((response) => {
-                var data = response.json()
-                console.log(data)
-                data.then((e) => {
-                    this.setState({
-                        event: e.event,
-                        accepted: e.event.isPrivate
-                    })
-                    console.log(e.event)
-                    console.log(this.state.event)
-                })
-                    .catch(e => console.log(e))
-            })
+        }) // requête vers l'API
+            .then((response) => response.json())
+            .then((results) => {
+                console.log("test")
+                console.log(results)
+
+                this.setState({ event: results.event })
+
+            }).catch((error) => {
+                console.error(error);
+            });
     }
+
     render() {
         const { navigation } = this.props;
         const event = this.state.event;
@@ -78,7 +62,7 @@ export default class Event extends React.Component {
 
 
                         <View style={[styles.container, styles.dFlex, styles.alignCenter, styles.justifyBetween, styles.marginBottom10, styles.marginTop10]}>
-                            <Text style={[styles.titleEvent, styles.textGreen]}>Anniv' de Julien {id}</Text>
+                            <Text style={[styles.titleEvent, styles.textGreen]}>{event.title}</Text>
                             <Text style={[styles.bold]}>le 15/05/2020 à 20h</Text>
                         </View>
                         <View style={[this.state.accepted == 1 ? [styles.infos, styles.justifyCenter, styles.alignCenter] : styles.dnone]}>
@@ -107,8 +91,8 @@ export default class Event extends React.Component {
                                 <View style={[styles.dFlex, styles.alignStart, styles.justifyBetween, styles.marginTop10]}>
                                     <View style={[styles.dFlexColumn]}>
                                         <Text style={[styles.textBold]}>Adresse de l'événement : </Text>
-                                        <Text>192 rue Paul</Text>
-                                        <Text>94500 CHAMPIGNY SUR MARNE</Text>
+                                        <Text>{event.adresse}</Text>
+                                        <Text>{event.zipCode} {event.city}</Text>
                                     </View>
                                     <TouchableOpacity style={[styles.btnGreenOutLine]}>
                                         <Text style={[styles.textBold, styles.textGreen]}>
@@ -129,48 +113,19 @@ export default class Event extends React.Component {
                                 </View>
 
                                 <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                                    <View style={[styles.marginTop20, styles.dFlexColumn, styles.alignCenter, styles.marginLeft5, styles.marginRight30]}>
-                                        <Image resizeMode={'cover'}
-                                            source={require('../images/user-default.jpg')}
-                                            style={styles.profil_picture} />
-                                        <Text>John</Text>
-                                        <Text style={[styles.textBold]}>Bill</Text>
-                                    </View>
-                                    <View style={[styles.marginTop20, styles.dFlexColumn, styles.alignCenter, styles.marginLeft5, styles.marginRight30]}>
-                                        <Image resizeMode={'cover'}
-                                            source={require('../images/user-default.jpg')}
-                                            style={styles.profil_picture} />
-                                        <Text>John</Text>
-                                        <Text style={[styles.textBold]}>Bill</Text>
-                                    </View>
-                                    <View style={[styles.marginTop20, styles.dFlexColumn, styles.alignCenter, styles.marginLeft5, styles.marginRight30]}>
-                                        <Image resizeMode={'cover'}
-                                            source={require('../images/user-default.jpg')}
-                                            style={styles.profil_picture} />
-                                        <Text>John</Text>
-                                        <Text style={[styles.textBold]}>Bill</Text>
-                                    </View>
-                                    <View style={[styles.marginTop20, styles.dFlexColumn, styles.alignCenter, styles.marginLeft5, styles.marginRight30]}>
-                                        <Image resizeMode={'cover'}
-                                            source={require('../images/user-default.jpg')}
-                                            style={styles.profil_picture} />
-                                        <Text>John</Text>
-                                        <Text style={[styles.textBold]}>Bill</Text>
-                                    </View>
-                                    <View style={[styles.marginTop20, styles.dFlexColumn, styles.alignCenter, styles.marginLeft5, styles.marginRight30]}>
-                                        <Image resizeMode={'cover'}
-                                            source={require('../images/user-default.jpg')}
-                                            style={styles.profil_picture} />
-                                        <Text>John</Text>
-                                        <Text style={[styles.textBold]}>Bill</Text>
-                                    </View>
-                                    <View style={[styles.marginTop20, styles.dFlexColumn, styles.alignCenter, styles.marginLeft5, styles.marginRight30]}>
-                                        <Image resizeMode={'cover'}
-                                            source={require('../images/user-default.jpg')}
-                                            style={styles.profil_picture} />
-                                        <Text>John</Text>
-                                        <Text style={[styles.textBold]}>Bill</Text>
-                                    </View>
+                                    {this.state.event.users_accepted.map(function (user, index) {
+                                        return (
+                                            <View key={index} style={[styles.marginTop20, styles.dFlexColumn, styles.alignCenter, styles.marginLeft5, styles.marginRight30]}>
+                                                <Image resizeMode={'cover'}
+                                                    source={require('../images/user-default.jpg')}
+                                                    style={styles.profil_picture} />
+                                                <Text>{user.firstname}</Text>
+                                                <Text style={[styles.textBold]}>{user.lastname}</Text>
+                                            </View>
+
+                                        )
+                                    })
+                                    }
                                 </ScrollView>
 
                                 <View style={[styles.dFlex, styles.alignCenter, styles.justifyBetween, styles.marginTop40, styles.marginBottom20]}>
@@ -180,35 +135,24 @@ export default class Event extends React.Component {
                                     <TouchableOpacity style={[styles.btnGreen]} onPress={() => navigation.navigate('AddListe')}>
                                         <Text style={[styles.textWhite, styles.textBold]}>
                                             Ajouter une liste
-                            </Text>
+                                        </Text>
                                     </TouchableOpacity>
                                 </View>
+                                {this.state.event.listes.map(function (liste, index) {
+                                    return (
+                                        <View key={index} style={[styles.listCard, styles.dFlex, styles.alignCenter, styles.justifyBetween, styles.marginBottom20]}>
+                                            <Text style={[styles.buttonTextGreen, styles.textBold, styles.marginLeft20]}>{liste.title}</Text>
+                                            <TouchableOpacity onPress={() => navigation.navigate('Liste')}>
+                                                <Text style={[styles.buttonTextGreen, styles.marginRight30]}>></Text>
+                                            </TouchableOpacity>
+                                        </View>
 
-                                <View style={[styles.listCard, styles.dFlex, styles.alignCenter, styles.justifyBetween, styles.marginBottom20]}>
-                                    <Text style={[styles.buttonTextGreen, styles.textBold, styles.marginLeft20]}>Nourriture</Text>
-                                    <TouchableOpacity onPress={() => navigation.navigate('Liste')}>
-                                        <Text style={[styles.buttonTextGreen, styles.marginRight30]}>></Text>
-                                    </TouchableOpacity>
-                                </View>
-
-                                <View style={[styles.listCard, styles.dFlex, styles.alignCenter, styles.justifyBetween, styles.marginBottom20]}>
-                                    <Text style={[styles.buttonTextGreen, styles.textBold, styles.marginLeft20]}>Nourriture</Text>
-                                    <TouchableOpacity onPress={() => navigation.navigate('Liste')}>
-                                        <Text style={[styles.buttonTextGreen, styles.marginRight30]}>></Text>
-                                    </TouchableOpacity>
-                                </View>
-
-                                <View style={[styles.listCard, styles.dFlex, styles.alignCenter, styles.justifyBetween, styles.marginBottom20]}>
-                                    <Text style={[styles.buttonTextGreen, styles.textBold, styles.marginLeft20]}>Nourriture</Text>
-                                    <TouchableOpacity onPress={() => navigation.navigate('Liste')}>
-                                        <Text style={[styles.buttonTextGreen, styles.marginRight30]}>></Text>
-                                    </TouchableOpacity>
-                                </View>
+                                    )
+                                })
+                                }
 
                             </View>
-
                         </View>
-
                     </ScrollView>
                 </View >
             )

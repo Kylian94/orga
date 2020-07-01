@@ -44,6 +44,7 @@ export default class Login extends React.Component {
             })
             .then(response => response.json())
             .then(json => {
+                console.log(json)
                 AsyncStorage.setItem('token', json.access_token)
 
 

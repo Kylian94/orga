@@ -30,21 +30,8 @@ export default class Home extends React.Component {
 
             //this.setState({ events: data });
             //this.setState({ events: events })
-        })
-        this.fetchEvents();
-        //console.log(data);
-        //this.setState({ events: data });
-        //console.log(this.result);
-        console.log('dans didMount() : ' + events)
-
-    }
-
-
-    fetchEvents = () => {
-        console.log(this.state.token);
-        //var TOKEN = AsyncStorage.getItem('token');
-        const URI = 'https://api-orga.kp-dev.fr';
-        return fetch(URI + "/api/events", {
+        });
+        return fetch('https://api-orga.kp-dev.fr/api/events', {
             method: 'GET',
             headers: {
                 Accept: 'application/json',
@@ -52,29 +39,25 @@ export default class Home extends React.Component {
                 Authorization: 'Bearer ' + this.state.token,
             },
 
-        })
-            .then((response) => {
-
-                // Si un code erreur a été détecté on déclenche une erreur
-                if (!response.ok) {
-                    throw Error(response.statusText);
-                }
-                return response;
-            })
-            .then((response) => {
-                var data = response.json()
-
-                data.then((e) => {
-                    this.setState({
-                        events: e.events
-                    })
-                    console.log(e.events)
-                    console.log(this.state.events)
+        }) // requête vers l'API
+            .then((response) => response.json())
+            .then((results) => {
+                this.setState({
+                    events: results.events
                 })
-                    .catch(e => console.log(e))
-            })
-    }
+                // console.log(results)
 
+            }).catch((error) => {
+                console.error(error);
+            });
+
+        //this.fetchEvents();
+        //console.log(data);
+        //this.setState({ events: data });
+        //console.log(this.result);
+        // console.log('dans didMount() : ' + events)
+
+    }
 
     render() {
         const { navigation } = this.props;
