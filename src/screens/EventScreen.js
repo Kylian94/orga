@@ -142,7 +142,7 @@ export default class Event extends React.Component {
                                     return (
                                         <View key={index} style={[styles.listCard, styles.dFlex, styles.alignCenter, styles.justifyBetween, styles.marginBottom20]}>
                                             <Text style={[styles.buttonTextGreen, styles.textBold, styles.marginLeft20]}>{liste.title}</Text>
-                                            <TouchableOpacity onPress={() => navigation.navigate('Liste')}>
+                                            <TouchableOpacity onPress={() => navigation.navigate('Liste', { id: liste.id })}>
                                                 <Text style={[styles.buttonTextGreen, styles.marginRight30]}>></Text>
                                             </TouchableOpacity>
                                         </View>
