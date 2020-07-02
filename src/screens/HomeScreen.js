@@ -60,60 +60,66 @@ export default class Home extends React.Component {
     render() {
         const { navigation } = this.props;
         const events = this.state.events;
-        if (events == null) {
-            return (
-                <View style={[styles.container, styles.textCenter, styles.dFlexColumn, styles.alignCenter, styles.justifyCenter]}>
-                    <View style={[{ display: "flex", flexDirection: "column", justifyContent: "center" }, styles.alignCenter,]}>
-                        <Image resizeMode={'cover'}
-                            source={require('../images/sad.png')}
-                            style={[styles.pictoBig, styles.marginTop20]} />
-                    </View>
-                    <Text style={[styles.textCenter, styles.marginTop20, styles.textGreen]}>Vous n'avez pas encore d'événements à venir.</Text>
-                    <View style={[{ display: "flex", flexDirection: "column", alignItems: "center" }]}>
-                        <Text style={[styles.marginTop10, styles.textSecondary, styles.textCenter]}>Dans votre profil, vous pouvez rechercher et ajouter vos amis.</Text>
-                    </View>
-                    <View style={[styles.fixedBottom, styles.bold]}>
-                        <View style={[{ display: "flex", flexDirection: "column", alignItems: "center" }]}>
-                            <Text style={[styles.marginTop20, styles.subTitle]}>Créez votre événement maintenant !</Text>
-                            <Image resizeMode={'cover'}
-                                source={require('../images/arrow-down.png')}
-                                style={[styles.marginTop20]} />
-                        </View>
-                    </View>
-                </View >
-            )
-        } else {
-            return (
-                <View style={styles.container} >
-                    <Text style={[styles.title, styles.marginTop20, styles.marginBottom20]}>Vos prochains événements</Text>
-                    <ScrollView>
-                        {this.state.events.map(function (event, index) {
-                            return (
-                                <View style={styles.marginBottom40} key={index}>
-                                    <TouchableOpacity onPress={() => navigation.navigate('Event')}>
-                                        <Image resizeMode={'cover'}
-                                            source={require('../images/bg-event-1.jpeg')}
-                                            style={styles.canvas} />
-                                    </TouchableOpacity>
-                                    <View style={[styles.dFlex, styles.justifyBetween, styles.alignCenter, styles.marginTop10]}>
-                                        <Text ellipsizeMode='tail' numberOfLines={2} style={styles.titleEvent}>{event.title}</Text>
-                                        <TouchableOpacity style={[styles.btnGreen]} onPress={() => navigation.navigate('Event', { id: event.id })}>
-                                            <Text style={[styles.textBold, styles.textWhite]}>voir ></Text>
-                                        </TouchableOpacity>
-                                    </View>
 
-                                    <View style={styles.dFlex}>
-                                        <Text ellipsizeMode='tail' numberOfLines={2} style={[styles.bold]}>Dans 3 jours,</Text>
-                                        <Text ellipsizeMode='tail' numberOfLines={2} style={[styles.marginLeft5]}>{event.date}</Text>
+        return (
+            <View style={[styles.dFlex]} >
+                {
+                    events.length ?
+
+                        events.map(function (event, index) {
+                            return (
+                                <ScrollView>
+                                    <Text style={[styles.title, styles.marginTop20, styles.marginBottom20]}>Vos prochains événements</Text>
+
+                                    <View style={styles.marginBottom40} key={index}>
+                                        <TouchableOpacity onPress={() => navigation.navigate('Event')}>
+                                            <Image resizeMode={'cover'}
+                                                source={require('../images/bg-event-1.jpeg')}
+                                                style={styles.canvas} />
+                                        </TouchableOpacity>
+                                        <View style={[styles.dFlex, styles.justifyBetween, styles.alignCenter, styles.marginTop10]}>
+                                            <Text ellipsizeMode='tail' numberOfLines={2} style={styles.titleEvent}>{event.title}</Text>
+                                            <TouchableOpacity style={[styles.btnGreen]} onPress={() => navigation.navigate('Event', { id: event.id })}>
+                                                <Text style={[styles.textBold, styles.textWhite]}>voir ></Text>
+                                            </TouchableOpacity>
+                                        </View>
+
+                                        <View style={styles.dFlex}>
+                                            <Text ellipsizeMode='tail' numberOfLines={2} style={[styles.bold]}>Dans 3 jours,</Text>
+                                            <Text ellipsizeMode='tail' numberOfLines={2} style={[styles.marginLeft5]}>{event.date}</Text>
+                                        </View>
                                     </View>
-                                </View>
+                                </ScrollView>
+
                             )
-                        })}
-                    </ScrollView>
-                </View >
-            )
-        }
+                        })
+                        :
+                        <View style={[styles.textCenter, styles.dFlexColumn, styles.alignCenter, styles.justifyCenter]}>
+                            <View style={[{ display: "flex", flexDirection: "column", justifyContent: "center" }, styles.alignCenter,]}>
+                                <Image resizeMode={'cover'}
+                                    source={require('../images/sad.png')}
+                                    style={[styles.pictoBig, styles.marginTop20]} />
+                            </View>
+                            <Text style={[styles.textCenter, styles.marginTop20, styles.textGreen]}>Vous n'avez pas encore d'événements à venir.</Text>
+                            <View style={[{ display: "flex", flexDirection: "column", alignItems: "center" }]}>
+                                <Text style={[styles.marginTop10, styles.textSecondary, styles.textCenter]}>Dans votre profil, vous pouvez rechercher et ajouter vos amis.</Text>
+                            </View>
+                            <View style={[styles.fixedBottom, styles.bold]}>
+                                <View style={[{ display: "flex", flexDirection: "column", alignItems: "center" }]}>
+                                    <Text style={[styles.marginTop20, styles.subTitle]}>Créez votre événement maintenant !</Text>
+                                    <Image resizeMode={'cover'}
+                                        source={require('../images/arrow-down.png')}
+                                        style={[styles.marginTop20]} />
+                                </View>
+                            </View>
+                        </View >
+
+                }
+            </View>
+        )
+
 
     }
 
 }
+

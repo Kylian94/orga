@@ -47,7 +47,7 @@ export default class Login extends React.Component {
                 console.log(json)
                 AsyncStorage.setItem('token', json.access_token)
                 AsyncStorage.setItem('user_id', json.user.id.toString())
-                this.props.navigation.navigate('Home', { screen: 'Home' });
+                this.props.navigation.goBack();
 
             })
             .catch(e => console.log(e))
