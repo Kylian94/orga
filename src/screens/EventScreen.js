@@ -1,8 +1,8 @@
 import React from 'react'
-import { View, Text, Image } from 'react-native'
+import { View, Text, Image, ActivityIndicator } from 'react-native'
 import styles from '../style/Style'
 
-import { ScrollView, TouchableOpacity, Button } from 'react-native-gesture-handler';
+import { ScrollView, TouchableOpacity, Button, } from 'react-native-gesture-handler';
 import AsyncStorage from '@react-native-community/async-storage';
 
 export default class Event extends React.Component {
@@ -58,14 +58,34 @@ export default class Event extends React.Component {
                 console.error(error);
             });
     }
+    acceptEvent = (id) => {
+        console.log(id)
+        return fetch('https://api-orga.kp-dev.fr/api/' + id + '/accept_event', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                Authorization: 'Bearer ' + this.state.token,
+            },
+        }) // requête vers l'API
+            .then((response) => response.json())
+            .then((results) => {
+                //console.log("test")
+                console.log(results)
+                //this.setState({ friends: results.friends })
+
+            }).catch((error) => {
+                console.error(error);
+            });
+    }
 
     render() {
         const { navigation } = this.props;
         const event = this.state.event;
         if (event == null) {
             return (
-                <View >
-                    <Text style={[styles.textCenter, styles.marginTop20, styles.container]}>Chargement...</Text>
+                <View style={[styles.container, styles.marginTop20]}>
+                    <ActivityIndicator size="large" color="#21B3C6" />
                 </View>
             )
         } else {
@@ -84,7 +104,7 @@ export default class Event extends React.Component {
                             <Text style={[styles.textCenter, styles.marginBottom10, styles.marginTop10]}>Tim J. vous à invité</Text>
                             <View style={[styles.dFlex, styles.bgGray, styles.alignCenter]}>
                                 <View style={[styles.dFlexColumn, styles.alignCenter]}>
-                                    <TouchableOpacity style={[styles.btnGreen, styles.marginTop10, styles.marginBottom10, styles.textCenter]} type="submit">
+                                    <TouchableOpacity onPress={() => { this.acceptEvent(event.id) }} style={[styles.btnGreen, styles.marginTop10, styles.marginBottom10, styles.textCenter]} type="submit">
                                         <Text style={[styles.textBold, styles.textWhite]}>Accepter</Text>
                                     </TouchableOpacity>
                                 </View>

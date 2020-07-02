@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, TouchableOpacity, Image, TextInput, CheckBox } from 'react-native'
+import { View, Text, TouchableOpacity, Image, TextInput, CheckBox, ActivityIndicator } from 'react-native'
 import styles from '../style/Style'
 import { ScrollView } from 'react-native-gesture-handler';
 
@@ -71,8 +71,8 @@ export default class AddEvent extends React.Component {
         const friends = this.state.friends;
         if (this.state.friends == null) {
             return (
-                <View >
-                    <Text style={[styles.textCenter, styles.marginTop20, styles.container]}>Chargement...</Text>
+                <View style={[styles.container, styles.marginTop20]}>
+                    <ActivityIndicator size="large" color="#21B3C6" />
                 </View>
             )
         } else {
