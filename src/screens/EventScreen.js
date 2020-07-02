@@ -40,7 +40,7 @@ export default class Event extends React.Component {
             .then((results) => {
                 //console.log(results)
                 this.setState({ event: results.event })
-                console.log(this.state.event.users_pending)
+                //console.log(this.state.event.users_pending)
                 if (this.state.event.users_pending.length) {
                     this.state.event.users_pending.map((user_pending, index) => {
                         //console.log(user_pending)
@@ -59,7 +59,7 @@ export default class Event extends React.Component {
             });
     }
     acceptEvent = (id) => {
-        console.log(id)
+        //console.log(id)
         return fetch('https://api-orga.kp-dev.fr/api/' + id + '/accept_event', {
             method: 'POST',
             headers: {
@@ -84,7 +84,7 @@ export default class Event extends React.Component {
         const event = this.state.event;
         if (event == null) {
             return (
-                <View style={[styles.container, styles.marginTop20]}>
+                <View style={[styles.container, styles.marginTop20, { flex: 1, alignItems: "center", justifyContent: "center" }]}>
                     <ActivityIndicator size="large" color="#21B3C6" />
                 </View>
             )
@@ -161,9 +161,9 @@ export default class Event extends React.Component {
                                     </TouchableOpacity>
                                 </View>
                                 {event.listes.length ?
-                                    event.listes.map(function (liste, index) {
+                                    event.listes.map(function (liste, index2) {
                                         return (
-                                            <View key={index} style={[styles.listCard, styles.dFlex, styles.alignCenter, styles.justifyBetween, styles.marginBottom20]}>
+                                            <View key={index2} style={[styles.listCard, styles.dFlex, styles.alignCenter, styles.justifyBetween, styles.marginBottom20]}>
                                                 <Text style={[styles.buttonTextGreen, styles.textBold, styles.marginLeft20]}>{liste.title}</Text>
                                                 <TouchableOpacity onPress={() => navigation.navigate('Liste', { id: liste.id })}>
                                                     <Text style={[styles.buttonTextGreen, styles.marginRight30]}>></Text>

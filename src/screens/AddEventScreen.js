@@ -71,7 +71,7 @@ export default class AddEvent extends React.Component {
         const friends = this.state.friends;
         if (this.state.friends == null) {
             return (
-                <View style={[styles.container, styles.marginTop20]}>
+                <View style={[styles.container, styles.marginTop20, { flex: 1, alignItems: "center", justifyContent: "center" }]}>
                     <ActivityIndicator size="large" color="#21B3C6" />
                 </View>
             )

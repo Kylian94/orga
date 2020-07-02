@@ -81,7 +81,7 @@ export default class Profil extends React.Component {
         const user = this.state.user;
         if (user == null) {
             return (
-                <View style={[styles.container, styles.marginTop20]}>
+                <View style={[styles.container, styles.marginTop20, { flex: 1, alignItems: "center", justifyContent: "center" }]}>
                     <ActivityIndicator size="large" color="#21B3C6" />
                 </View>
             )

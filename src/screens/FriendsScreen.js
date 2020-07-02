@@ -43,7 +43,7 @@ export default class Friends extends React.Component {
         const { navigation } = this.props;
         if (this.state.friends == null) {
             return (
-                <View style={[styles.container, styles.marginTop20]}>
+                <View style={[styles.container, styles.marginTop20, { flex: 1, alignItems: "center", justifyContent: "center" }]}>
                     <ActivityIndicator size="large" color="#21B3C6" />
                 </View>
             )
