@@ -122,7 +122,7 @@ export default class AddEvent extends React.Component {
                             {
                                 friends.map((friend, index) => {
                                     return (
-                                        <View style={[styles.marginTop20, styles.dFlexColumn, styles.alignCenter, styles.marginLeft5, styles.marginRight30]}>
+                                        <View key={index} style={[styles.marginTop20, styles.dFlexColumn, styles.alignCenter, styles.marginLeft5, styles.marginRight30]}>
                                             <CheckBox value={this.state.checkbox}
                                                 onChange={() => this.setState({ checkbox1: !this.state.checkbox })}></CheckBox>
                                             <Image resizeMode={'cover'}
