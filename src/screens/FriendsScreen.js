@@ -51,7 +51,6 @@ export default class Friends extends React.Component {
             return (
                 <View >
                     <ScrollView style={styles.container}>
-
                         {this.state.friends.map((friend, index) => {
                             return (
                                 <View style={[{ display: "flex", flexDirection: "row" }, styles.marginTop20, styles.alignCenter, styles.justifyBetween, styles.marginBottom20]}>
