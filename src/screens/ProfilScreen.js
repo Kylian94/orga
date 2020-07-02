@@ -100,7 +100,7 @@ export default class Profil extends React.Component {
                                     style={[styles.profil_picture]} />
                                 <View style={[styles.dFlexColumn, styles.marginLeft20]}>
                                     <Text>{user.firstname}</Text>
-                                    <Text>{user.lastname}</Text>
+                                    <Text style={[styles.bold]}>{user.lastname}</Text>
                                 </View>
                             </View>
 

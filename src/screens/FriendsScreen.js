@@ -53,7 +53,7 @@ export default class Friends extends React.Component {
                     <ScrollView style={styles.container}>
                         {this.state.friends.map((friend, index) => {
                             return (
-                                <View style={[{ display: "flex", flexDirection: "row" }, styles.marginTop20, styles.alignCenter, styles.justifyBetween, styles.marginBottom20]}>
+                                <View key={index} style={[{ display: "flex", flexDirection: "row" }, styles.marginTop20, styles.alignCenter, styles.justifyBetween, styles.marginBottom20]}>
                                     <View style={[{ display: "flex", flexDirection: "row" }, styles.alignCenter]}>
                                         <Image resizeMode={'cover'}
                                             source={{ uri: 'https://i.stack.imgur.com/6FiRR.png' }}

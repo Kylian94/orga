@@ -9,8 +9,9 @@ export default class Event extends React.Component {
 
     state = {
         event: null,
-        accepted: 1,
-        token: null
+        accepted: 0,
+        token: null,
+        user_id: null,
     }
 
     async componentDidMount() {
@@ -19,6 +20,12 @@ export default class Event extends React.Component {
         await value.then((e) => {
             this.setState({
                 token: e
+            })
+        })
+        var user = AsyncStorage.getItem('user_id');
+        await user.then((e) => {
+            this.setState({
+                user_id: e
             })
         })
         return fetch('https://api-orga.kp-dev.fr/api/events/' + id, {
@@ -32,8 +39,25 @@ export default class Event extends React.Component {
             .then((response) => response.json())
             .then((results) => {
                 //console.log("test")
-                console.log(results)
+                //console.log(results)
                 this.setState({ event: results.event })
+                console.log(this.state.event.users_pending)
+                if (this.state.event.users_pending.length) {
+                    this.state.event.users_pending.map((user_pending, index) => {
+                        console.log(user_pending)
+                        console.log("test")
+                        if (user_pending.id == this.state.user_id) {
+                            return (this.setState({ accepted: 0 }))
+                        } else {
+                            return (this.setState({ accepted: 1 }))
+                        }
+
+                    })
+                } else {
+                    this.setState({ accepted: 1 })
+                }
+
+                console.log(this.state.accepted)
             }).catch((error) => {
                 console.error(error);
             });
