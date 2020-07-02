@@ -2,7 +2,6 @@ import React from 'react'
 import { View, Text, Image } from 'react-native'
 import styles from '../style/Style'
 
-
 import { ScrollView, TouchableOpacity, Button } from 'react-native-gesture-handler';
 import AsyncStorage from '@react-native-community/async-storage';
 
@@ -12,7 +11,8 @@ export default class Event extends React.Component {
         event: null,
         accepted: 1,
         token: null
-    };
+    }
+
     async componentDidMount() {
         const { id } = this.props.route.params;
         var value = AsyncStorage.getItem('token');
@@ -21,8 +21,6 @@ export default class Event extends React.Component {
                 token: e
             })
         })
-        console.log(this.state.token)
-
         return fetch('https://api-orga.kp-dev.fr/api/events/' + id, {
             method: 'GET',
             headers: {
@@ -47,11 +45,10 @@ export default class Event extends React.Component {
     render() {
         const { navigation } = this.props;
         const event = this.state.event;
-        const { id } = this.props.route.params;
         if (event == null) {
             return (
                 <View >
-                    <Text style={[styles.textCenter, styles.marginTop20]}>Chargement</Text>
+                    <Text style={[styles.textCenter, styles.marginTop20, styles.container]}>Chargement...</Text>
                 </View>
             )
         } else {
@@ -59,8 +56,6 @@ export default class Event extends React.Component {
                 <View >
                     <ScrollView>
                         <Image source={require('../images/bg-event-1.jpeg')} style={[styles.map]}></Image>
-
-
                         <View style={[styles.container, styles.dFlex, styles.alignCenter, styles.justifyBetween, styles.marginBottom10, styles.marginTop10]}>
                             <Text style={[styles.titleEvent, styles.textGreen]}>{event.title}</Text>
                             <Text style={[styles.bold]}>le 15/05/2020 à 20h</Text>
@@ -83,11 +78,9 @@ export default class Event extends React.Component {
                                 </View>
                             </View>
                         </View>
-
                         <View style={[this.state.accepted == 1 ? styles.bgGray : styles.dnone]}>
                             <Image source={{ uri: 'https://img.20mn.fr/Hm_mQqfYRW2-3-uB-i9qAQ/830x532_carte-localisation-place-trocadero-paris.jpg' }} style={[styles.map,]}></Image>
                             <View style={[styles.container]}>
-
                                 <View style={[styles.dFlex, styles.alignStart, styles.justifyBetween, styles.marginTop10]}>
                                     <View style={[styles.dFlexColumn]}>
                                         <Text style={[styles.textBold]}>Adresse de l'événement : </Text>
@@ -95,25 +88,19 @@ export default class Event extends React.Component {
                                         <Text>{event.zipCode} {event.city}</Text>
                                     </View>
                                     <TouchableOpacity style={[styles.btnGreenOutLine]}>
-                                        <Text style={[styles.textBold, styles.textGreen]}>
-                                            Y aller >
-                            </Text>
+                                        <Text style={[styles.textBold, styles.textGreen]}>Y aller ></Text>
                                     </TouchableOpacity>
                                 </View>
-
                                 <View style={[styles.dFlex, styles.alignCenter, styles.justifyBetween, styles.marginTop40]}>
                                     <View style={[styles.dFlexColumn]}>
                                         <Text style={[styles.title]}>Participants :</Text>
                                     </View>
                                     <TouchableOpacity style={[styles.btnGreen]} onPress={() => navigation.navigate('AddFriends')}>
-                                        <Text style={[styles.textWhite, styles.textBold]}>
-                                            Inviter
-                            </Text>
+                                        <Text style={[styles.textWhite, styles.textBold]}> Inviter </Text>
                                     </TouchableOpacity>
                                 </View>
-
                                 <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                                    {this.state.event.users_accepted.map(function (user, index) {
+                                    {event.users_accepted.map(function (user, index) {
                                         return (
                                             <View key={index} style={[styles.marginTop20, styles.dFlexColumn, styles.alignCenter, styles.marginLeft5, styles.marginRight30]}>
                                                 <Image resizeMode={'cover'}
@@ -127,30 +114,32 @@ export default class Event extends React.Component {
                                     })
                                     }
                                 </ScrollView>
-
                                 <View style={[styles.dFlex, styles.alignCenter, styles.justifyBetween, styles.marginTop40, styles.marginBottom20]}>
                                     <View style={[styles.dFlexColumn]}>
                                         <Text style={[styles.title]}>Listes :</Text>
                                     </View>
-                                    <TouchableOpacity style={[styles.btnGreen]} onPress={() => navigation.navigate('AddListe')}>
+                                    <TouchableOpacity style={[styles.btnGreen]} onPress={() => navigation.navigate('AddListe', { id: event.id })}>
                                         <Text style={[styles.textWhite, styles.textBold]}>
                                             Ajouter une liste
                                         </Text>
                                     </TouchableOpacity>
                                 </View>
-                                {this.state.event.listes.map(function (liste, index) {
-                                    return (
-                                        <View key={index} style={[styles.listCard, styles.dFlex, styles.alignCenter, styles.justifyBetween, styles.marginBottom20]}>
-                                            <Text style={[styles.buttonTextGreen, styles.textBold, styles.marginLeft20]}>{liste.title}</Text>
-                                            <TouchableOpacity onPress={() => navigation.navigate('Liste', { id: liste.id })}>
-                                                <Text style={[styles.buttonTextGreen, styles.marginRight30]}>></Text>
-                                            </TouchableOpacity>
-                                        </View>
-
-                                    )
-                                })
+                                {event.listes.length ?
+                                    event.listes.map(function (liste, index) {
+                                        return (
+                                            <View key={index} style={[styles.listCard, styles.dFlex, styles.alignCenter, styles.justifyBetween, styles.marginBottom20]}>
+                                                <Text style={[styles.buttonTextGreen, styles.textBold, styles.marginLeft20]}>{liste.title}</Text>
+                                                <TouchableOpacity onPress={() => navigation.navigate('Liste', { id: liste.id })}>
+                                                    <Text style={[styles.buttonTextGreen, styles.marginRight30]}>></Text>
+                                                </TouchableOpacity>
+                                            </View>
+                                        )
+                                    })
+                                    :
+                                    <View style={[styles.marginTop10, styles.marginBottom40]}>
+                                        <Text style={[styles.textSecondary]}>Aucune liste pour l'instant. Ajoutez une liste organiser votre event !</Text>
+                                    </View>
                                 }
-
                             </View>
                         </View>
                     </ScrollView>

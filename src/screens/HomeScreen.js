@@ -8,16 +8,14 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 import AsyncStorage from '@react-native-community/async-storage';
 
-
 export default class Home extends React.Component {
 
     state = {
         events: [],
         token: null,
+        user_id: null,
 
     }
-
-
 
     async componentDidMount() {
 
@@ -26,11 +24,16 @@ export default class Home extends React.Component {
 
             this.setState({
                 token: e
+            });
+        })
+        var user = AsyncStorage.getItem('user_id');
+        await user.then((e) => {
+            this.setState({
+                user_id: e
             })
-
-            //this.setState({ events: data });
-            //this.setState({ events: events })
-        });
+        })
+        console.log(this.state.user_id)
+        console.log(this.state.token)
         return fetch('https://api-orga.kp-dev.fr/api/events', {
             method: 'GET',
             headers: {
@@ -45,40 +48,43 @@ export default class Home extends React.Component {
                 this.setState({
                     events: results.events
                 })
+
                 // console.log(results)
 
             }).catch((error) => {
                 console.error(error);
             });
 
-        //this.fetchEvents();
-        //console.log(data);
-        //this.setState({ events: data });
-        //console.log(this.result);
-        // console.log('dans didMount() : ' + events)
-
     }
 
     render() {
         const { navigation } = this.props;
-        const events = null
+        const events = this.state.events;
         if (events == null) {
             return (
-                <View style={[styles.container, styles.textCenter, styles.dFlexColumn]}>
-                    <Text style={[styles.textCenter, styles.marginTop20, styles.bold, styles.subTitle]}>Vous n'avez pas encore d'événements à venir.</Text>
-                    <Text style={[styles.marginTop10]}>Créez votre événement et invitez vos amis</Text>
-                    <View style={[styles.fixedBottom, styles.bold]}>
-                        <Text style={[styles.bold]}>Informations :</Text>
-                        <Text style={[styles.marginTop10]}>Dans votre profil, vous pouvez rechercher et ajouter vos amis afin de les inviter et qu'ils puissent vous inviter à leurs événements.</Text>
+                <View style={[styles.container, styles.textCenter, styles.dFlexColumn, styles.alignCenter, styles.justifyCenter]}>
+                    <View style={[{ display: "flex", flexDirection: "column", justifyContent: "center" }, styles.alignCenter,]}>
+                        <Image resizeMode={'cover'}
+                            source={require('../images/sad.png')}
+                            style={[styles.pictoBig, styles.marginTop20]} />
                     </View>
-
+                    <Text style={[styles.textCenter, styles.marginTop20, styles.textGreen]}>Vous n'avez pas encore d'événements à venir.</Text>
+                    <View style={[{ display: "flex", flexDirection: "column", alignItems: "center" }]}>
+                        <Text style={[styles.marginTop10, styles.textSecondary, styles.textCenter]}>Dans votre profil, vous pouvez rechercher et ajouter vos amis.</Text>
+                    </View>
+                    <View style={[styles.fixedBottom, styles.bold]}>
+                        <View style={[{ display: "flex", flexDirection: "column", alignItems: "center" }]}>
+                            <Text style={[styles.marginTop20, styles.subTitle]}>Créez votre événement maintenant !</Text>
+                            <Image resizeMode={'cover'}
+                                source={require('../images/arrow-down.png')}
+                                style={[styles.marginTop20]} />
+                        </View>
+                    </View>
                 </View >
             )
         } else {
             return (
-
                 <View style={styles.container} >
-
                     <Text style={[styles.title, styles.marginTop20, styles.marginBottom20]}>Vos prochains événements</Text>
                     <ScrollView>
                         {this.state.events.map(function (event, index) {
@@ -101,18 +107,12 @@ export default class Home extends React.Component {
                                         <Text ellipsizeMode='tail' numberOfLines={2} style={[styles.marginLeft5]}>{event.date}</Text>
                                     </View>
                                 </View>
-
                             )
                         })}
-                        {/* <Text onPress={() => navigation.navigate('Login')}>Connexion</Text>
-                        <Text onPress={() => navigation.navigate('Register')}>Inscription</Text> */}
                     </ScrollView>
-
                 </View >
             )
         }
-
-
 
     }
 

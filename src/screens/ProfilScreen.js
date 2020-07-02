@@ -43,6 +43,7 @@ export default class Profil extends React.Component {
             .then((response) => {
                 AsyncStorage.removeItem('token')
 
+                this.props.navigation.goBack();
                 // Si un code erreur a été détecté on déclenche une erreur
                 if (!response.ok) {
                     throw Error(response.statusText);
@@ -57,6 +58,7 @@ export default class Profil extends React.Component {
 
     render() {
         const { navigation } = this.props;
+        const { navigate } = this.props.navigation;
         return (
             <View style={styles.container}>
                 <View style={[styles.infos, styles.justifyCenter, styles.alignCenter]}>

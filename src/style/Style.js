@@ -25,6 +25,11 @@ export default StyleSheet.create({
         right: 10,
         bottom: 10
     },
+    pictoBig: {
+        height: 90,
+        width: 90,
+        marginHorizontal: "auto",
+    },
     buttonContainer: {
         backgroundColor: '#222',
         borderRadius: 5,
@@ -162,6 +167,9 @@ export default StyleSheet.create({
     textWhite: {
         color: "white",
     },
+    textSecondary: {
+        opacity: 0.5,
+    },
     textBold: {
         fontWeight: "bold",
     },
@@ -200,6 +208,7 @@ export default StyleSheet.create({
     },
     textCenter: {
         marginHorizontal: "auto",
+        textAlign: "center",
     },
     floatLeft: {
         textAlign: "left",

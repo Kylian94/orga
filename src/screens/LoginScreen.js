@@ -46,7 +46,8 @@ export default class Login extends React.Component {
             .then(json => {
                 console.log(json)
                 AsyncStorage.setItem('token', json.access_token)
-
+                AsyncStorage.setItem('user_id', json.user.id.toString())
+                this.props.navigation.navigate('Home', { screen: 'Home' });
 
             })
             .catch(e => console.log(e))
@@ -54,7 +55,8 @@ export default class Login extends React.Component {
 
 
     render() {
-        const { navigation } = this.props;
+
+        const { navigate } = this.props.navigation;
         return (
             <ScrollView style={styles.container}>
 
@@ -70,7 +72,7 @@ export default class Login extends React.Component {
                     <Text style={[styles.buttonText, styles.marginBottom10, styles.marginTop10]}>Se connecter</Text>
                 </TouchableOpacity>
 
-                <Text style={[styles.textGreen, { alignSelf: "center" }, styles.marginTop20]} onPress={() => navigation.navigate('Register')}> Vous n'avez pas encore de compte ? Créez-en un</Text>
+                <Text style={[styles.textGreen, { alignSelf: "center" }, styles.marginTop20]} onPress={() => navigate('Register')}> Vous n'avez pas encore de compte ? Créez-en un</Text>
             </ScrollView >
         )
     }

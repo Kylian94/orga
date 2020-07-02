@@ -1,10 +1,5 @@
 import * as React from 'react'
 
-// import { NavigationContainer } from '@react-navigation/native'
-// import { createStackNavigator } from '@react-navigation/stack'
-
-// import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
 import Home from '../screens/HomeScreen'
 import Detail from '../screens/DetailsScreen'
 import Login from '../screens/LoginScreen'
@@ -160,8 +155,6 @@ class MainStackNavigator extends React.Component {
                                 />
                             </>
                         )}
-
-
                 </Stack.Navigator>
             </NavigationContainer>
         )
