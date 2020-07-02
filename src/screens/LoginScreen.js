@@ -2,7 +2,6 @@ import React from 'react'
 import { View, Text, TouchableOpacity, Image, TextInput } from 'react-native'
 import styles from '../style/Style'
 import { ScrollView } from 'react-native-gesture-handler';
-import axios from 'axios';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -11,10 +10,8 @@ import AsyncStorage from '@react-native-community/async-storage';
 export default class Login extends React.Component {
 
     state = {
-        events: [],
         email: null,
         password: null,
-        token: null,
     }
 
     async componentDidMount() {
@@ -22,7 +19,6 @@ export default class Login extends React.Component {
     }
 
     login = () => {
-
         return fetch("https://api-orga.kp-dev.fr/api/login", {
             method: 'POST',
             headers: {
@@ -48,14 +44,11 @@ export default class Login extends React.Component {
                 AsyncStorage.setItem('token', json.access_token)
                 AsyncStorage.setItem('user_id', json.user.id.toString())
                 this.props.navigation.goBack();
-
             })
             .catch(e => console.log(e))
     }
 
-
     render() {
-
         const { navigate } = this.props.navigation;
         return (
             <ScrollView style={styles.container}>

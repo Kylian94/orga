@@ -28,15 +28,12 @@ export default class Event extends React.Component {
                 'Content-Type': 'application/json',
                 Authorization: 'Bearer ' + this.state.token,
             },
-
         }) // requête vers l'API
             .then((response) => response.json())
             .then((results) => {
-                console.log("test")
+                //console.log("test")
                 console.log(results)
-
                 this.setState({ event: results.event })
-
             }).catch((error) => {
                 console.error(error);
             });
@@ -109,7 +106,6 @@ export default class Event extends React.Component {
                                                 <Text>{user.firstname}</Text>
                                                 <Text style={[styles.textBold]}>{user.lastname}</Text>
                                             </View>
-
                                         )
                                     })
                                     }

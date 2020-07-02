@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 import Home from '../screens/HomeScreen'
-import Detail from '../screens/DetailsScreen'
+
 import Login from '../screens/LoginScreen'
 import Register from '../screens/RegisterScreen'
 import Event from '../screens/EventScreen'
@@ -159,7 +159,6 @@ class MainStackNavigator extends React.Component {
             </NavigationContainer>
         )
     }
-
 }
 
 export default MainStackNavigator

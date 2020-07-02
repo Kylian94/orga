@@ -2,8 +2,6 @@ import React from 'react'
 import { View, Text, TouchableOpacity, Image } from 'react-native'
 import styles from '../style/Style'
 import { ScrollView } from 'react-native-gesture-handler';
-import axios from 'axios';
-import ajax from '../services/FetchEvents';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import AsyncStorage from '@react-native-community/async-storage';
@@ -14,11 +12,9 @@ export default class Home extends React.Component {
         events: [],
         token: null,
         user_id: null,
-
     }
 
     async componentDidMount() {
-
         var value = AsyncStorage.getItem('token');
         await value.then((e) => {
 
@@ -41,7 +37,6 @@ export default class Home extends React.Component {
                 'Content-Type': 'application/json',
                 Authorization: 'Bearer ' + this.state.token,
             },
-
         }) // requête vers l'API
             .then((response) => response.json())
             .then((results) => {
@@ -54,7 +49,6 @@ export default class Home extends React.Component {
             }).catch((error) => {
                 console.error(error);
             });
-
     }
 
     render() {
@@ -90,7 +84,6 @@ export default class Home extends React.Component {
                                         </View>
                                     </View>
                                 </ScrollView>
-
                             )
                         })
                         :
@@ -113,7 +106,6 @@ export default class Home extends React.Component {
                                 </View>
                             </View>
                         </View >
-
                 }
             </View>
         )

@@ -13,8 +13,6 @@ export default class AddItem extends React.Component {
     }
 
     async componentDidMount() {
-
-
         var value = AsyncStorage.getItem('token');
         await value.then((e) => {
 
@@ -23,7 +21,6 @@ export default class AddItem extends React.Component {
             });
         })
         console.log(this.state.token)
-
     }
 
     addItem = async () => {
@@ -59,7 +56,6 @@ export default class AddItem extends React.Component {
                         <View style={[styles.dFlexColumn, { alignSelf: "flex-start", }, styles.marginTop20]}>
                             <Text style={[styles.bold]}>Qu'est-ce que vous allez ramener ?</Text>
                         </View>
-
                         <TextInput onChangeText={(item_content) => { this.setState({ item_content: item_content }); }} style={[styles.input, styles.marginTop20]} placeholder={"Du pain, des olives, etc"}></TextInput>
                         <TouchableOpacity style={[styles.btnGreen, styles.marginTop10, styles.textCenter]} onPress={() => this.addItem()}>
                             <Text style={[styles.textBold, styles.textWhite]}>Ajouter</Text>

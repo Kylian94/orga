@@ -22,7 +22,6 @@ export default class AddListe extends React.Component {
     }
 
     addListe = async () => {
-
         try {
             const event_id = this.props.route.params;
 
