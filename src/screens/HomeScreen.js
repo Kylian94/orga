@@ -56,16 +56,16 @@ export default class Home extends React.Component {
         const events = this.state.events;
 
         return (
-            <View style={[styles.dFlex]} >
+            <ScrollView style={[styles.dFlex, styles.container]} >
+                <Text style={[styles.title, styles.marginTop20, styles.marginBottom20]}>Vos prochains événements</Text>
+
                 {
                     events.length ?
 
                         events.map(function (event, index) {
                             return (
                                 <ScrollView>
-                                    <Text style={[styles.title, styles.marginTop20, styles.marginBottom20]}>Vos prochains événements</Text>
-
-                                    <View style={styles.marginBottom40} key={index}>
+                                    <View style={styles.marginBottom20} key={index}>
                                         <TouchableOpacity onPress={() => navigation.navigate('Event')}>
                                             <Image resizeMode={'cover'}
                                                 source={require('../images/bg-event-1.jpeg')}
@@ -107,7 +107,7 @@ export default class Home extends React.Component {
                             </View>
                         </View >
                 }
-            </View>
+            </ScrollView>
         )
 
 

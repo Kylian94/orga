@@ -14,7 +14,8 @@ export default class Liste extends React.Component {
         items: null,
         token: null,
         liste: null,
-        uniqueValue: 1
+        uniqueValue: 1,
+        user_id: null,
     };
     forceRemount = () => {
         let uniqueValue = this.state.uniqueValue
@@ -29,7 +30,14 @@ export default class Liste extends React.Component {
                 token: e
             })
         })
-        //console.log(this.id);
+        var user_id = AsyncStorage.getItem('user_id');
+        await user_id.then((e) => {
+            this.setState({
+                user_id: e.toString()
+
+            })
+        })
+        //console.log(AsyncStorage.getItem('user_id'))
         console.log(this.state.token)
 
         return fetch('https://api-orga.kp-dev.fr/api/listes/' + id, {
@@ -85,6 +93,7 @@ export default class Liste extends React.Component {
         const { navigation } = this.props;
         const items = this.state.items;
         const liste = this.state.liste;
+        const user_id = this.state.user_id;
         if (items == null) {
             return (
                 <View >
@@ -103,6 +112,7 @@ export default class Liste extends React.Component {
                         </View>
                         <View style={[styles.marginTop20, styles.marginBottom40]}>
                             {items.map((item, index) => {
+                                //onsole.log(item)
                                 return (
                                     <View key={index} style={[styles.container, styles.dFlex, styles.justifyBetween, styles.alignCenter]}>
                                         <View style={[styles.dFlex, styles.alignCenter]}>
@@ -123,13 +133,26 @@ export default class Liste extends React.Component {
                                             <Text style={[styles.bold]}> {item.title}</Text>
                                         </View>
 
-                                        <TouchableOpacity>
-                                            <Icon name="minus-circle" color={"gray"} size={16} />
-                                        </TouchableOpacity>
-                                        <TouchableOpacity style={[styles.marginLeft40]} onPress={() => this.addToItem(item.id)}>
-                                            <Icon name="plus-circle" color={"#21B3C6"} size={16} />
-                                            <Text>{item.id}</Text>
-                                        </TouchableOpacity>
+                                        {item.users.map((user, index3) => {
+                                            var userItem = user_id === user.id.toString()
+                                            console.log(userItem)
+
+                                            return (
+
+                                                userItem && item.users.length ?
+
+                                                    <TouchableOpacity>
+                                                        <Icon name="minus-circle" color={"gray"} size={16} />
+                                                    </TouchableOpacity>
+
+
+                                                    : < TouchableOpacity style={[styles.marginLeft40]} onPress={() => this.addToItem(item.id)}>
+                                                        <Icon name="plus-circle" color={"#21B3C6"} size={16} />
+                                                    </TouchableOpacity>
+                                            )
+
+
+                                        })}
                                     </View>
                                 )
                             })}
