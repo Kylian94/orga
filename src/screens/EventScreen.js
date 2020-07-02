@@ -38,26 +38,22 @@ export default class Event extends React.Component {
         }) // requête vers l'API
             .then((response) => response.json())
             .then((results) => {
-                //console.log("test")
                 //console.log(results)
                 this.setState({ event: results.event })
                 console.log(this.state.event.users_pending)
                 if (this.state.event.users_pending.length) {
                     this.state.event.users_pending.map((user_pending, index) => {
-                        console.log(user_pending)
-                        console.log("test")
+                        //console.log(user_pending)
                         if (user_pending.id == this.state.user_id) {
                             return (this.setState({ accepted: 0 }))
                         } else {
                             return (this.setState({ accepted: 1 }))
                         }
-
                     })
                 } else {
                     this.setState({ accepted: 1 })
                 }
-
-                console.log(this.state.accepted)
+                //console.log(this.state.accepted)
             }).catch((error) => {
                 console.error(error);
             });
