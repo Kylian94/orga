@@ -10,15 +10,20 @@ export default class AddFriends extends React.Component {
 
         token: null,
         friends: null,
+
     }
 
     async componentDidMount() {
+
+
+
         var value = AsyncStorage.getItem('token');
         await value.then((e) => {
             this.setState({
                 token: e
             })
         });
+
         return fetch('https://api-orga.kp-dev.fr/api/friends', {
             method: 'GET',
             headers: {
@@ -30,12 +35,37 @@ export default class AddFriends extends React.Component {
             .then((response) => response.json())
             .then((results) => {
                 //console.log("test")
-                console.log(results.friends)
+                // console.log(results.friends)
                 this.setState({ friends: results.friends })
 
             }).catch((error) => {
                 console.error(error);
             });
+    }
+
+    addFriend = async (friendId) => {
+        const event_id = this.props.route.params;
+        try {
+            const response = await fetch('https://api-orga.kp-dev.fr/api/' + event_id.event_id + '/add_members/' + friendId, {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                    Authorization: 'Bearer ' + this.state.token,
+                },
+                body: {
+                    user_id: friendId,
+                    event_id: event_id.event_id.toString(),
+                },
+            }) // requête vers l'API
+                ;
+            const results = await response.json();
+            //console.log("test")
+            console.log(results);
+        }
+        catch (error) {
+            console.error(error);
+        }
     }
 
 
@@ -60,9 +90,9 @@ export default class AddFriends extends React.Component {
                                                 source={{ uri: 'https://i.stack.imgur.com/6FiRR.png' }}
                                                 style={styles.profil_picture} />
                                             <Text style={[styles.marginLeft5]}>{friend.firstname}</Text>
-                                            <Text style={[styles.textBold, styles.marginLeft5]}>{friend.lastname}</Text>
+                                            <Text style={[styles.textBold, styles.marginLeft5]}>{friend.lastname + ' ' + friend.id}</Text>
                                         </View>
-                                        <TouchableOpacity style={[styles.btnGreenOutLine]}>
+                                        <TouchableOpacity onPress={() => this.addFriend(friend.id)} style={[styles.btnGreenOutLine]}>
                                             <Text style={[styles.textGreen, styles.textBold]}>
                                                 Inviter
                                             </Text>
