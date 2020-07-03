@@ -63,7 +63,7 @@ export default class Home extends React.Component {
             )
         } else {
             return (
-                <ScrollView style={[styles.dFlex, styles.container]} >
+                <ScrollView style={[styles.container]} >
                     <Text style={[styles.title, styles.marginTop20, styles.marginBottom20]}>Vos prochains événements</Text>
 
                     {
@@ -71,7 +71,7 @@ export default class Home extends React.Component {
 
                             events.map(function (event, index) {
                                 return (
-                                    <ScrollView>
+                                    <View style={[styles.dFlex]}>
                                         <View style={styles.marginBottom20} key={index}>
                                             <TouchableOpacity onPress={() => navigation.navigate('Event')}>
                                                 <Image resizeMode={'cover'}
@@ -90,7 +90,7 @@ export default class Home extends React.Component {
                                                 <Text ellipsizeMode='tail' numberOfLines={2} style={[styles.marginLeft5]}>{event.date}</Text>
                                             </View>
                                         </View>
-                                    </ScrollView>
+                                    </View>
                                 )
                             })
                             :

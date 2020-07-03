@@ -15,8 +15,6 @@ export default class AddFriends extends React.Component {
 
     async componentDidMount() {
 
-
-
         var value = AsyncStorage.getItem('token');
         await value.then((e) => {
             this.setState({
