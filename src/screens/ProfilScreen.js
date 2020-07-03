@@ -4,11 +4,7 @@ import styles from '../style/Style'
 import { ScrollView } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-
-
 import AsyncStorage from '@react-native-community/async-storage';
-
-
 
 export default class Profil extends React.Component {
 
@@ -18,7 +14,6 @@ export default class Profil extends React.Component {
     }
 
     async componentDidMount() {
-
         var value = AsyncStorage.getItem('token');
         await value.then((e) => {
             this.setState({
@@ -42,8 +37,6 @@ export default class Profil extends React.Component {
             }).catch((error) => {
                 console.error(error);
             });
-
-
     }
 
     logout = () => {
@@ -57,7 +50,6 @@ export default class Profil extends React.Component {
                 'Content-Type': 'application/json',
                 Authorization: 'Bearer ' + this.state.token
             },
-
         })
             .then((response) => {
                 AsyncStorage.removeItem('token')
@@ -67,9 +59,7 @@ export default class Profil extends React.Component {
                 if (!response.ok) {
                     throw Error(response.statusText);
                 }
-
                 return response;
-
             })
             .then(response => AsyncStorage.removeItem('token'))
             .catch(e => console.log(e))
@@ -103,9 +93,6 @@ export default class Profil extends React.Component {
                                     <Text style={[styles.bold]}>{user.lastname}</Text>
                                 </View>
                             </View>
-
-
-
                         </View>
                         <TouchableOpacity onPress={() => navigation.navigate('Account')} style={{ alignSelf: 'flex-end' }}>
                             <Icon name={'pencil-square'} size={38} color={"#21B3C6"} onPress={() => navigation.navigate('Account')} />
@@ -134,7 +121,5 @@ export default class Profil extends React.Component {
                 </View >
             )
         }
-
     }
-
 }
