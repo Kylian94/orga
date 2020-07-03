@@ -78,6 +78,26 @@ export default class Event extends React.Component {
                 console.error(error);
             });
     }
+    refuseEvent = (id) => {
+        //console.log(id)
+        return fetch('https://api-orga.kp-dev.fr/api/' + id + '/cancel_event', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                Authorization: 'Bearer ' + this.state.token,
+            },
+        }) // requête vers l'API
+            .then((response) => response.json())
+            .then((results) => {
+                //console.log("test")
+                console.log(results)
+                //this.setState({ friends: results.friends })
+
+            }).catch((error) => {
+                console.error(error);
+            });
+    }
 
     render() {
         const { navigation } = this.props;
@@ -109,7 +129,7 @@ export default class Event extends React.Component {
                                     </TouchableOpacity>
                                 </View>
                                 <View style={[styles.dFlexColumn, styles.alignCenter]}>
-                                    <TouchableOpacity style={[styles.marginTop10, styles.marginBottom10, styles.textCenter]} type="submit">
+                                    <TouchableOpacity onPress={() => { this.refuseEvent(event.id) }} style={[styles.marginTop10, styles.marginBottom10, styles.textCenter]} type="submit">
                                         <Text style={[styles.textBold, styles.textGreen,]}>Refuser</Text>
                                     </TouchableOpacity>
                                 </View>

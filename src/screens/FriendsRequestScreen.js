@@ -71,7 +71,6 @@ export default class FriendsRequest extends React.Component {
                 //console.log("test")
                 console.log(results)
                 //this.setState({ friends: results.user.friend_of })
-
             }).catch((error) => {
                 console.error(error);
             });
@@ -91,7 +90,6 @@ export default class FriendsRequest extends React.Component {
                     <ScrollView style={styles.container}>
                         {
                             this.state.friends.length ?
-
                                 this.state.friends.map((friend, index) => {
                                     return (
                                         <View key={index} style={[{ display: "flex", flexDirection: "row" }, styles.marginTop20, styles.alignCenter, styles.justifyBetween, styles.marginBottom20]}>
@@ -106,18 +104,16 @@ export default class FriendsRequest extends React.Component {
                                                 <TouchableOpacity style={[styles.btnGreen]} onPress={() => this.acceptFriend(friend.id)}>
                                                     <Text style={[styles.textWhite, styles.textBold]}>
                                                         V
-                                </Text>
+                                                    </Text>
                                                 </TouchableOpacity>
                                                 <TouchableOpacity style={[styles.btnGreenOutLine, styles.marginLeft40]} onPress={() => this.cancelFriend(friend.id)}>
                                                     <Text style={[styles.textGreen, styles.textBold]}>
                                                         X
-                                </Text>
+                                                    </Text>
                                                 </TouchableOpacity>
                                             </View>
                                         </View>
                                     )
-
-
                                 })
                                 :
                                 <View>
@@ -127,7 +123,6 @@ export default class FriendsRequest extends React.Component {
                                         <Text style={[styles.textBold, styles.textWhite, styles.textCenter, styles.marginBottom10, styles.marginTop10]}>Rechercher des amis</Text>
                                     </TouchableOpacity>
                                 </View>
-
                         }
                     </ScrollView>
                 </View >
