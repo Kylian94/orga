@@ -63,7 +63,7 @@ export default class Home extends React.Component {
             )
         } else {
             return (
-                <ScrollView style={[styles.container]} >
+                <ScrollView style={[!events.length ? styles.dFlex : null, styles.container]} >
                     <Text style={[styles.title, styles.marginTop20, styles.marginBottom20]}>Vos prochains événements</Text>
 
                     {
@@ -94,6 +94,7 @@ export default class Home extends React.Component {
                                 )
                             })
                             :
+
                             <View style={[styles.textCenter, styles.dFlexColumn, styles.alignCenter, styles.justifyCenter]}>
                                 <View style={[{ display: "flex", flexDirection: "column", justifyContent: "center" }, styles.alignCenter,]}>
                                     <Image resizeMode={'cover'}
@@ -113,6 +114,8 @@ export default class Home extends React.Component {
                                     </View>
                                 </View>
                             </View >
+
+
                     }
                 </ScrollView>
             )
