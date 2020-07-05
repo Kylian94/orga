@@ -153,7 +153,7 @@ export default class Event extends React.Component {
                                         <Text style={[styles.title]}>Participants :</Text>
                                     </View>
                                     <TouchableOpacity style={[styles.btnGreen]} onPress={() => navigation.navigate('AddFriends', { event_id: this.state.event.id })}>
-                                        <Text style={[styles.textWhite, styles.textBold]}> Inviter </Text>
+                                        <Text style={[event.isPrivate ? styles.dnone : null, styles.textWhite, styles.textBold]}> Inviter </Text>
                                     </TouchableOpacity>
                                 </View>
                                 <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
